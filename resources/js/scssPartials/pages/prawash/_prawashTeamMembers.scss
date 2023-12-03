@@ -1,0 +1,139 @@
+.prawash-karya-samiti-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  .contents {
+    margin: 100px 0;
+    width: 1269px;
+    padding: 0 0.7em;
+    .heading-wrapper {
+      border-bottom: 1px solid #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      .title {
+        font-weight: 600;
+        font-size: 40px;
+        // line-height: 0;
+        color: $primaryDarkBlue;
+      }
+    }
+    @media screen and (max-width: 550px) {
+      .heading-wrapper {
+        .title {
+          font-size: 25px;
+        }
+        .see-more {
+          font-size: 12px;
+        }
+      }
+    }
+    .cards-wrapper {
+      width: 100%;
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2em;
+    }
+    @media screen and (max-width: 1285px) {
+      .cards-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3em 3em;
+      }
+    }
+    @media screen and (max-width: 950px) {
+      .cards-wrapper {
+        gap: 3em 1em;
+      }
+    }
+    @media screen and (max-width: 850px) {
+      .cards-wrapper {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1em 1em;
+      }
+    }
+    @media screen and (max-width: 550px) {
+      .cards-wrapper {
+        margin-top: 15px;
+      }
+    }
+    @media screen and (max-width: 500px) {
+      .cards-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media screen and (max-width: 500px) {
+      .cards-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media screen and (max-width: 350px) {
+      .cards-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    //   -----------------------
+    //   .names-wrapper {
+    //     width: 100%;
+    //     margin-top: 3em;
+    //     display: flex;
+    //     flex-direction: column;
+    //     gap: 1px;
+    //     .texts {
+    //       display: flex;
+    //       gap: 3em;
+    //       font-size: 20px;
+    //       background-color: $primaryDarkBlue;
+    //       color: #fff;
+    //       padding: 5px 10px;
+    //       .serial-num {
+    //       }
+    //       .mem-name {
+    //       }
+    //     }
+    //   }
+    .names-table {
+      margin-top: 3em;
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    }
+    @media screen and (max-width: 550px) {
+      .names-table {
+        margin-top: 15px;
+      }
+    }
+  }
+  @media screen and (max-width: 1284.5px) {
+    .contents {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .content {
+      .names-table {
+        width: 800px;
+      }
+    }
+  }
+  @media screen and (max-width: 550px) {
+    .contents {
+      margin: 60px 0;
+      //   padding: 15px;
+    }
+  }
+}
+
+// }

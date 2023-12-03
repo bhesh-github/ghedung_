@@ -1,0 +1,143 @@
+.notice-detail-page {
+    font-family: "Mukta", sans-serif;
+    margin-top: 0em;
+    padding-bottom: 2em;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3em;
+    .contents {
+        margin-top: 2.5em;
+        // padding: 1em 0.7em;
+        padding: 0 0.7em;
+        width: 1269px;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        gap: 1.5em;
+
+        .main-column {
+            font-size: 18.5px;
+            line-height: 30px;
+
+            .heading-wrapper {
+                margin: 1em 0;
+                // margin-top: 2.5em;
+                // border-bottom: 1px solid #000;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                // justify-content: space-between;
+                align-items: baseline;
+                .heading {
+                    font-size: 31px;
+                    font-weight: 400;
+                    line-height: 40px;
+                }
+                // .social-icons {
+                //   align-self: center;
+                //   margin-top: 0.5em;
+                //   display: grid;
+                //   width: 80%;
+                //   grid-template-columns: repeat(6, 1fr);
+                //   justify-content: center;
+                //   gap: 0.6em;
+                //   .mui-btn-wrapper {
+                //     max-width: 115px;
+                //     padding: 0;
+                //     height: 32px;
+                //   }
+                //   .fb-btn {
+                //     background-color: #3b5998;
+                //   }
+                //   .share-icon {
+                //     background-color: #87d335;
+                //   }
+                //   .whatsapp-icon {
+                //     background-color: #25d366;
+                //   }
+                //   .skype-icon {
+                //     background-color: #00aff0;
+                //   }
+                //   .twitter-icon {
+                //     background-color: #00acee;
+                //   }
+                //   .mail-icon {
+                //     background-color: #c71610;
+                //   }
+                //   .social-icon {
+                //     width: 16px;
+                //     height: 16px;
+                //     color: #fff;
+                //   }
+                // }
+                // @media screen and (max-width: 455px) {
+                //   .social-icons {
+                //     grid-template-columns: repeat(3, 1fr);
+                //   }
+                // }
+            }
+            @media screen and (max-width: 600px) {
+                .heading-wrapper {
+                    margin: 0.5em 0;
+                    .heading {
+                        font-size: 25px;
+                    }
+                }
+            }
+            .show-image {
+                width: 100%;
+            }
+        }
+        .side-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5em;
+            @media screen and (min-width: 900px) {
+                .content {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                }
+            }
+            @media screen and (max-width: 650px) {
+                .content {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                }
+            }
+        }
+        @media screen and (max-width: 900px) {
+            .side-column {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5em;
+            }
+        }
+        @media screen and (max-width: 550px) {
+            .side-column {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .side-column {
+                gap: 1em;
+            }
+        }
+    }
+    @media screen and (max-width: 900px) {
+        .contents {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+@media screen and (max-width: 600px) {
+    .notice-detail-page {
+        margin-top: 0em;
+        padding-bottom: 1em;
+    }
+}
+
+@media screen and (max-width: 1268px) {
+    .contents {
+        width: 100%;
+    }
+}

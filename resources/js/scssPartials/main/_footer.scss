@@ -1,0 +1,83 @@
+.footer {
+    width: 100vw;
+    // position: relative;
+    // margin-top: 2.5em;
+    background-color: $primaryDarkBlue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .contents {
+        padding-top: 3em;
+        padding-bottom: 1em;
+        width: 1269px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        .social-icons {
+            display: flex;
+            .icons-wrapper {
+                margin-left: 1em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid #fff;
+                border-radius: 50%;
+                width: 44px;
+                height: 44px;
+                cursor: pointer;
+                .icon {
+                    color: #fff;
+                    width: 20.5px;
+                    height: 20.5px;
+                }
+            }
+        }
+        .text-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+            width: 100%;
+            color: #fff;
+            text-align: center;
+            .hr-line {
+                color: #fff;
+                background-color: #fff;
+                height: 0.5px;
+            }
+            .texts {
+                padding: 0em 1em;
+                flex-wrap: wrap;
+                display: flex;
+                justify-content: center;
+                column-gap: 1em;
+            }
+        }
+        .copyright {
+            margin-top: 2em;
+            color: rgb(173, 173, 173);
+            font-size: 13px;
+            text-align: center;
+        }
+    }
+    @media screen and (max-width: 1270px) {
+        .contents {
+            width: 100%;
+        }
+    }
+    .bottom-bar-img {
+        margin-top: 0.4em;
+        width: 100%;
+        width: 1269px;
+    }
+    @media screen and (max-width: 1270px) {
+        .bottom-bar-img {
+            width: 100%;
+        }
+    }
+}
+// @media screen and (max-width: 550px) {
+//   .footer {
+//     margin-top: 60px;
+//   }
+// }

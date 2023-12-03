@@ -1,0 +1,67 @@
+.prawash-activity-card {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5em;
+    .prawash-card {
+      display: flex;
+      gap: 1em;
+      .text-side {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7em;
+        .title {
+          font-size: 22px;
+          font-weight: 600;
+          color: $primaryTitleDarker;
+          transition: 0.3s;
+          cursor: pointer;
+          &:hover {
+            color: $primaryBlue;
+          }
+        }
+        .brief {
+          font-size: 16px;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 5; /* number of lines to show */
+          line-clamp: 5;
+          -webkit-box-orient: vertical;
+        }
+        .links-wrapper {
+          .icon-text-wrap {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: $primaryTitleDarker;
+            .icon {
+              width: 10px;
+              height: 10px;
+            }
+            &:hover {
+              color: $primaryTitle;
+            }
+          }
+        }
+      }
+      .card-img {
+        width: 300px;
+        cursor: pointer;
+      }
+    }
+    @media screen and (max-width: 700px) {
+      .prawash-card {
+        gap: 0.5em;
+        flex-direction: column;
+      }
+    }
+    @media screen and (max-width: 319px) {
+      .prawash-card {
+        .card-img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  

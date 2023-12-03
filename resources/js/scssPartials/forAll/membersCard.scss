@@ -1,0 +1,60 @@
+.member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    // height: 100%;
+    .member-img {
+        height: 250px;
+        width: 100%;
+        border: 5px solid black;
+    }
+    .icons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        .icon {
+            color: #7d877e;
+            background-color: #f1f1f1;
+            border-radius: 50%;
+            height: 25px;
+            width: 25px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .fb:hover {
+            color: #3b5998;
+        }
+        .github:hover {
+            color: #171515;
+        }
+        .linkedin:hover {
+            color: #0072b1;
+        }
+    }
+    .text-wrapper {
+        margin-top: -5px;
+        text-align: center;
+        .name {
+            font-weight: 600;
+            font-size: 20px;
+        }
+    }
+}
+@media screen and (max-width: 850px) {
+    .member-card {
+        gap: 0.5em;
+        .icons {
+            .icon {
+                height: 20px;
+                width: 20px;
+            }
+        }
+        .text-wrapper {
+            font-size: 14px;
+            .name {
+                font-size: 15px;
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+// .progress-indicator-comp {
+//   height: 100%;
+//   width: 100%;
+//   background-color: rgba(255, 255, 255, 0.3);
+//   top: 0%;
+//   left: 0%;
+//   position: fixed;
+//   z-index: 9999;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   .spinner {
+//     color: blue;
+//   }
+// }
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  font-family: "Roboto" !important;
+}
+.css-1eaqvnp-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  width: 220px;
+}
+.MuiTooltip-tooltip {
+  font-size: 13px !important;
+  background-color: #fff !important;
+  border: 1px solid silver;
+  color: black !important;
+}
+.account-menu-wrapper {
+  width: 300px;
+  .profile-text {
+    font-size: 16px;
+  }
+  .content-item {
+    font-size: 16px;
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+.avatar-img {
+  margin-left: -15px;
+  max-width: 33px;
+  max-height: 33px;
+}
+@media screen and (max-width: 500px) {
+  .avatar-img {
+    max-width: 27px;
+    max-height: 27px;
+  }
+}

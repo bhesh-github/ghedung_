@@ -1,0 +1,107 @@
+@import "../../forAll/membersCard";
+
+.members-page {
+  margin-bottom: 120px;
+  margin-top: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  .in-wrapper {
+    width: 1284.5px;
+    padding: 0em 0.7em;
+    .heading-wrapper {
+      //   margin-top: 0em;
+      border-bottom: 1px solid #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      .title {
+        font-weight: 600;
+        font-size: 40px;
+        // line-height: 0;
+        color: $primaryDarkBlue;
+      }
+      //   .see-more {
+      //     cursor: pointer;
+      //     color: #000;
+      //     font-size: 18px;
+      //   }
+    }
+    @media screen and (max-width: 550px) {
+      .heading-wrapper {
+        .title {
+          font-size: 25px;
+        }
+        .see-more {
+          font-size: 12px;
+        }
+      }
+    }
+    .cards-wrapper {
+      width: 100%;
+      margin-top: 3em;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2em;
+    }
+    @media screen and (max-width: 1285px) {
+      .cards-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3em 3em;
+      }
+    }
+    @media screen and (max-width: 950px) {
+      .cards-wrapper {
+        gap: 3em 1em;
+      }
+    }
+    @media screen and (max-width: 850px) {
+      .cards-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1em 1em;
+      }
+    }
+    @media screen and (max-width: 500px) {
+      .cards-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+  @media screen and (max-width: 1284.5px) {
+    .in-wrapper {
+      width: 100%;
+    }
+  }
+  .seebtn {
+    text-transform: capitalize;
+    margin: 50px 0 0;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 16px;
+    background-color: transparent;
+    border: 2px solid $primaryDarkBlue;
+    padding: 5px 25px;
+    color: $primaryDarkBlue;
+    transition: 0.3s;
+    &:hover {
+      background-color: $primaryDarkBlue;
+      color: #fff;
+    }
+  }
+}
+@media screen and (max-width: 550px) {
+  .members-page {
+    margin-bottom: 60px;
+    .in-wrapper {
+      width: 100%;
+      padding: 15px;
+      .team-head {
+        .news-head {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}

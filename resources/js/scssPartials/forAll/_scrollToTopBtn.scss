@@ -1,0 +1,28 @@
+.scroll-to-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 5rem;
+  bottom: 5rem;
+  z-index: 999999999;
+  transition: 0.3s;
+  cursor: pointer;
+  .scroll-icon {
+    color: $primaryGrey;
+    color: grey;
+    height: 35px;
+    width: 35px;
+  }
+  &:hover {
+    .scroll-icon {
+      color: $primaryGrey;
+    }
+  }
+}
+@media screen and (max-width: 550px) {
+  .scroll-to-btn {
+    right: 2rem;
+    bottom: 2rem;
+  }
+}

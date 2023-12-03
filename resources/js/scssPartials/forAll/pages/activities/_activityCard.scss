@@ -1,0 +1,114 @@
+.activity-card {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5em;
+    .articles-date {
+        font-size: 18px;
+        color: $primaryTitleDarker;
+        border-bottom: 1px solid rgb(197, 197, 197);
+    }
+    .inner-wrapper {
+        margin-top: 1em;
+        display: flex;
+        gap: 1em;
+        .text-side {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7em;
+            &:hover {
+                .title {
+                    color: $primaryBlue;
+                }
+                cursor: pointer;
+                .sub-title {
+                    // text-decoration: underline;
+                    // cursor: pointer;
+                }
+                .brief {
+                    text-decoration: underline;
+                }
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 600;
+                color: $primaryTitleDarker;
+                transition: 0.3s;
+                //
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2; /* number of lines to show */
+                line-clamp: 2;
+                -webkit-box-orient: vertical;
+                cursor: pointer;
+
+                &:hover {
+                    color: $primaryBlue;
+                }
+            }
+            .sub-title {
+                font-size: 18px;
+                font-weight: 500;
+                //
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 1; /* number of lines to show */
+                line-clamp: 1;
+                -webkit-box-orient: vertical;
+            }
+            .brief {
+                font-size: 16px;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2; /* number of lines to show */
+                line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+            .links-wrapper {
+                .icon-text-wrap {
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    font-size: 14px;
+                    color: $primaryTitleDarker;
+                    .icon {
+                        width: 10px;
+                        height: 10px;
+                    }
+                    &:hover {
+                        color: $primaryTitle;
+                    }
+                }
+            }
+        }
+        .card-img {
+            margin-left: auto;
+            min-width: 300px;
+            width: 300px;
+            height: 230px;
+            cursor: pointer;
+        }
+    }
+    @media screen and (max-width: 700px) {
+        .inner-wrapper {
+            gap: 0.5em;
+            flex-direction: column;
+        }
+    }
+    @media screen and (max-width: 450px) {
+        .inner-wrapper {
+            .card-img {
+                height: 170px;
+            }
+        }
+    }
+    @media screen and (max-width: 319px) {
+        .inner-wrapper {
+            .card-img {
+                width: 100%;
+                min-width: 100%;
+                height: 180px;
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+@import "./homeCarousel";
+@import "./newsSection";
+@import "./videosSection";
+@import "./noticeSection";
+@import "./members/membersSection";
+@import "./contact/contactSection";
+@import "./articlesSection";
+
+.home-page {
+  font-family: "Mukta", sans-serif;
+
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  .contents {
+    text-align: justify;
+    .carousel-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

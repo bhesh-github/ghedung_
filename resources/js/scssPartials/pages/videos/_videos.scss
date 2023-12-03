@@ -1,0 +1,181 @@
+.video-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 20px;
+  font-family: "Mukta", sans-serif;
+
+  .section-wrapper {
+    width: 1284.5px;
+    padding: 0em 0.7em;
+    margin: 100px 0;
+
+    .section-heading {
+      text-transform: capitalize;
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 42px;
+      letter-spacing: 0em;
+      color: $primaryDarkBlue;
+      border-bottom: 1px solid black;
+    }
+    @media screen and (max-width: 550px) {
+      .section-heading {
+        font-size: 25px;
+      }
+    }
+    .cards-wrapper {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2em;
+      .react-player-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        .top-over-lay {
+          height: 100%;
+          width: 100%;
+          z-index: 2;
+          background-color: transparent;
+          position: absolute;
+          cursor: pointer;
+        }
+        .react-player {
+          width: 100%;
+          height: 270px !important;
+          background-color: rgb(233, 233, 233);
+          overflow: hidden;
+          &:hover {
+            .activities-card {
+              .card-image {
+                transform: scale(1.1);
+              }
+            }
+          }
+        }
+        @media screen and (max-width: 1109px) {
+          .react-player {
+            height: 240px !important;
+          }
+        }
+        @media screen and (max-width: 971px) {
+          .react-player {
+            height: 210px !important;
+          }
+        }
+        @media screen and (max-width: 890px) {
+          .react-player {
+            height: 190px !important;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 890px) {
+      .cards-wrapper {
+        gap: 1em;
+      }
+    }
+    @media screen and (max-width: 800px) {
+      .cards-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1em;
+      }
+    }
+    @media screen and (max-width: 550px) {
+      .cards-wrapper {
+        grid-template-columns: 1fr;
+        gap: 1em;
+      }
+    }
+  }
+  @media screen and (max-width: 1285px) {
+    .section-wrapper {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 550px) {
+    .section-wrapper {
+      margin: 3em;
+
+      padding: 0 16px;
+    }
+  }
+}
+
+// --------------------------------------------
+.overlay-outer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  .slider-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.701);
+
+    position: fixed;
+    z-index: 9999999;
+    .btn-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 0.8em;
+      position: absolute;
+      right: 0;
+      background-color: rgb(37, 37, 37);
+      width: 120px;
+      height: 40px;
+      .close-btn {
+        transform: 0.5s;
+        cursor: pointer;
+        color: silver;
+        width: 25px;
+        height: 25px;
+        &:hover {
+          color: #dfdfdf;
+        }
+      }
+    }
+  }
+  .silders-comp {
+    padding: 0 1em;
+    z-index: 99999999;
+    height: 600px;
+    width: 1000px;
+    .react-player {
+      height: 100% !important;
+    }
+  }
+  @media screen and (max-width: 920px) {
+    .silders-comp {
+      height: 450px;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .silders-comp {
+      height: 400px;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .silders-comp {
+      height: 350px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .silders-comp {
+      height: 300px;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .silders-comp {
+      height: 250px;
+    }
+  }
+}

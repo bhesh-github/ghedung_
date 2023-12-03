@@ -1,0 +1,82 @@
+.activity-detail {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+    .contents {
+        margin: 100px 0;
+        margin-top: 60px;
+        width: 1269px;
+        padding: 0 0.7em;
+        display: flex;
+        gap: 1.5em;
+        .main-column {
+            .top-head {
+                // display: flex;
+                // display: grid;
+                // grid-template-columns: 1fr 5fr;
+                gap: 3em;
+                font-weight: 600;
+                .heading-side {
+                    .head {
+                        font-size: 40px;
+                    }
+                    .sec-head {
+                        font-size: 22px;
+                    }
+                }
+            }
+            // @media screen and (max-width: 750px) {
+            //   .top-head {
+            //     grid-template-columns: 1fr;
+            //     gap: 0em;
+            //     .heading-side {
+            //       grid-row-start: 1;
+            //     }
+            //   }
+            // }
+            @media screen and (max-width: 550px) {
+                .top-head {
+                    .heading-side {
+                        .head {
+                            font-size: 27px;
+                        }
+                        .sec-head {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+            .desc {
+                margin-top: 3em;
+                text-indent: 50px;
+                font-size: 18px;
+                width: 100%;
+            }
+            @media screen and (max-width: 550px) {
+                .desc {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 1268px) {
+        .contents {
+            width: 100%;
+        }
+    }
+    @media screen and (max-width: 1107px) {
+        .contents {
+            flex-direction: column;
+            gap: 3em;
+        }
+    }
+}
+@media screen and (max-width: 550px) {
+    .activity-detail {
+        padding-bottom: 1em;
+        .contents {
+            margin: 20px 0;
+        }
+    }
+}

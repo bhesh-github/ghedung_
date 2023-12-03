@@ -1,0 +1,108 @@
+.gallery-carousel {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  width: 100%;
+  .slider-img {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 693px;
+  }
+  @media screen and (max-width: 1150px) {
+    .slider-img {
+      height: 600px;
+    }
+  }
+  @media screen and (max-width: 850px) {
+    .slider-img {
+      height: 500px;
+    }
+  }
+  @media screen and (max-width: 655px) {
+    .slider-img {
+      height: 400px;
+    }
+  }
+  @media screen and (max-width: 550px) {
+    .slider-img {
+      height: 350px;
+    }
+  }
+  @media screen and (max-width: 460px) {
+    .slider-img {
+      height: 300px;
+    }
+  }
+  @media screen and (max-width: 390px) {
+    .slider-img {
+      height: 280px;
+    }
+  }
+  @media screen and (max-width: 370px) {
+    .slider-img {
+      height: 250px;
+    }
+  }
+  // .dots-indicator {
+  //   margin-top: -2em;
+  //   z-index: 99;
+  //   display: flex !important;
+  //   justify-content: center;
+  //   gap: 10px;
+  //   // margin: 0 5px;
+  //   // width: 18px;
+  //   // height: 18px;
+  //   // border-radius: 50px;
+  //   // display: inline-block;
+  //   list-style-type: none;
+  //   li {
+  //     width: 18px;
+  //     height: 18px;
+  //     border-radius: 50px;
+  //     display: inline-block;
+  //     background-color: $primaryAccentBlue;
+  //     button {
+  //       cursor: pointer;
+  //       width: 100%;
+  //       height: 100%;
+  //       background-color: transparent;
+  //       color: transparent;
+  //       border: none;
+  //     }
+  //   }
+  //   li.carousel-dots-active {
+  //     background-color: $primaryDarkBlue;
+  //   }
+  // }
+  // .carousel-arrow {
+  //   background-color: #fff;
+  //   height: 50px;
+  //   width: 50px;
+  //   color: #000 !important;
+  //   position: absolute;
+  //   // bottom: 0;
+  //   top: 50%;
+  //   transform: translate(0, -50%);
+  // }
+
+  // @media screen and (max-width: 450px) {
+  //   .dots-indicator {
+  //     li {
+  //       width: 14px;
+  //       height: 14px;
+  //     }
+  //   }
+  // }
+}
+
+// .gallery-carousel {
+// //   height: 100%;
+// //   width: 100%;
+//   .slider-img {
+//     height: 100%;
+//     padding: 5rem;
+//     background-color: red;
+//   }
+// }

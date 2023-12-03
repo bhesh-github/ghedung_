@@ -1,0 +1,61 @@
+@import "./fonts/gyuchhen";
+
+$primaryDarkBlue: #002060;
+$primaryBlue: #2a3890;
+$primaryYellow: #ffe001;
+$primaryRed: #ef1923;
+$primaryGrey: #3a3a3a;
+$primaryTitle: #54595f;
+$primaryTitleDarker: #343434;
+$primaryGreyBG: #efefef;
+
+@import "./scssPartials/main/header/header";
+
+@import "./scssPartials/forAll/accountMenu";
+@import "./scssPartials/forAll/snackBar";
+@import "./scssPartials/forAll/newsCard";
+@import "./scssPartials/forAll/noticeCard";
+@import "./scssPartials/forAll/reactResponsiveCarousel";
+@import "./scssPartials/forAll/timeline";
+@import "./scssPartials/forAll/innerBanner";
+@import "./scssPartials/forAll/pages/activities/activityCard";
+@import "./scssPartials/forAll/pages/articles/articleCard";
+@import "./scssPartials/forAll/relatedBar";
+@import "./scssPartials/forAll/scrollToTopBtn";
+@import "./scssPartials/forAll/fallbackIndicator/fallbackIndicator";
+
+@import "./scssPartials/pages/home/home.scss";
+@import "./scssPartials/main/footer";
+@import "./scssPartials/pages/news/news";
+@import "./scssPartials/pages/videos/videos";
+@import "./scssPartials/pages/notice/notice";
+@import "./scssPartials/pages/gallery/gallery";
+@import "./scssPartials/pages/news/newsDetail";
+@import "./scssPartials/pages/notice/noticeDetail";
+@import "./scssPartials/pages/members/members";
+@import "./scssPartials/pages/gallery/galleryImages";
+@import "./scssPartials/pages/samiti/samiti";
+@import "./scssPartials/pages/dastabej/dastabej";
+@import "./scssPartials/pages/about/aboutUs";
+@import "./scssPartials/pages/articles/articles";
+@import "./scssPartials/pages/articles/articleDetail";
+@import "./scssPartials/pages/activities/activities";
+@import "./scssPartials/pages/activities/activityDetail";
+@import "./scssPartials/pages/prawash/prawash";
+@import "./scssPartials/pages/prawash/prawashTeamMembers";
+@import "./scssPartials/pages/prawash/prawashActivities/prawashActivities";
+@import "./scssPartials/pages/prawash/prawashActivities/prawashActivityDetail";
+@import "./scssPartials/pages/prawash/prawashActivities/prawashActivityCard";
+@import "./scssPartials/pages/notFoundPage";
+
+// --------
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Mukta", sans-serif;
+  overflow-x: hidden;
+}

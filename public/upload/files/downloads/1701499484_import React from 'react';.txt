@@ -1,0 +1,28 @@
+import React from 'react';
+import './style.css';
+
+export default function App() {
+  // console.log('     *');
+  // console.log('    ***');
+  // console.log('   *****');
+  // console.log('  *******');
+  // console.log(' *********');
+  // console.log('***********');
+
+  for (let i = 6; i >= 1; i--) {
+    let stars = '';
+    for (let j = 1; j <= i; j++) {
+      // if (j === i) {
+      //   stars += '*';
+      // }
+    }
+    console.log(stars);
+  }
+  console.log('x');
+  return (
+    <div>
+      <h1>Hello StackBlitz!</h1>
+      <p>Start editing to see some magic happen :)</p>
+    </div>
+  );
+}

@@ -1,0 +1,36 @@
+.inner-banner {
+  width: 100%;
+  height: 185px;
+  background-color: rgb(236, 236, 236);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .text-wrapper {
+    width: 1284.5px;
+    padding: 0em 1.2em;
+    text-align: left;
+    .page-name {
+      font-size: 60px;
+      font-weight: 600;
+      color: $primaryDarkBlue;
+    }
+    .title {
+      font-size: 25px;
+      text-transform: capitalize;
+    }
+  }
+  @media screen and (max-width: 1285px) {
+    .text-wrapper {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 550px) {
+    .text-wrapper {
+      padding: 0 16px;
+      .page-name {
+        font-size: 45px;
+        color: $primaryDarkBlue;
+      }
+    }
+  }
+}
