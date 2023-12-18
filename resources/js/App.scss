@@ -21,6 +21,7 @@ $primaryGreyBG: #efefef;
 @import "./scssPartials/forAll/pages/activities/activityCard";
 @import "./scssPartials/forAll/pages/articles/articleCard";
 @import "./scssPartials/forAll/relatedBar";
+@import "./scssPartials/forAll/subCompanyRelatedBar";
 @import "./scssPartials/forAll/scrollToTopBtn";
 @import "./scssPartials/forAll/fallbackIndicator/fallbackIndicator";
 
@@ -41,21 +42,24 @@ $primaryGreyBG: #efefef;
 @import "./scssPartials/pages/articles/articleDetail";
 @import "./scssPartials/pages/activities/activities";
 @import "./scssPartials/pages/activities/activityDetail";
-@import "./scssPartials/pages/prawash/prawash";
-@import "./scssPartials/pages/prawash/prawashTeamMembers";
-@import "./scssPartials/pages/prawash/prawashActivities/prawashActivities";
-@import "./scssPartials/pages/prawash/prawashActivities/prawashActivityDetail";
-@import "./scssPartials/pages/prawash/prawashActivities/prawashActivityCard";
+
+// sub company
+@import "./scssPartials/pages/subCompany/subCompany";
+@import "./scssPartials/pages/subCompany/subCompanyTeamMembers";
+@import "./scssPartials/pages/subCompany/subCompanyActivities/subCompanyActivities";
+@import "./scssPartials/pages/subCompany/subCompanyActivities/subCompanyActivityDetail";
+@import "./scssPartials/pages/subCompany/subCompanyActivities/subCompanyActivityCard";
+
 @import "./scssPartials/pages/notFoundPage";
 
 // --------
 * {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 body {
-  box-sizing: border-box;
-  font-family: "Mukta", sans-serif;
-  overflow-x: hidden;
+    box-sizing: border-box;
+    font-family: "Mukta", sans-serif;
+    overflow-x: hidden;
 }

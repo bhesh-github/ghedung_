@@ -80,10 +80,16 @@
 </html> --}}
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    @php
+    $profile = \App\Models\CompanyProfile::first();
+@endphp
     <head>
         <meta charset="utf-8">
+    <link rel="icon" href="{{asset('upload/images/company_profile/'.$profile->favicon)}}"/>
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Nepal Tamang Ghedung</title>
+        <title>{{ $profile->company_name }}</title>
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />

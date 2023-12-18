@@ -24,7 +24,6 @@ class SubCompanySectionController extends Controller
     {
         $sub_company_section = SubCompanySection::where('slug', $sec_slug)->first();
         $sub_company = SubCompany::where('slug', $comp_slug)->first();
-
         $sub_company_team = SubCompanyTeam::where('section_id', $sub_company_section->id)
             ->where('company_id', $sub_company->id)
             ->oldest()
@@ -33,13 +32,12 @@ class SubCompanySectionController extends Controller
             ->where('company_id', $sub_company->id)
             ->oldest()
             ->get();
-
         if (!$sub_company_team->isEmpty()) {
-            return view('admin.sub-company.sections.team.index', compact("sec_slug", "sub_company_team", "sub_company"));
+            return view('admin.sub-company.sections.team.index', compact("sec_slug", "comp_slug", "sub_company_team", "sub_company"));
         } else if (!$sub_company_activity->isEmpty()) {
-            return view('admin.sub-company.sections.activity.index', compact("sub_company_activity", "sub_company"));
+            return view('admin.sub-company.sections.activity.index', compact("sec_slug", "comp_slug", "sub_company_activity", "sub_company"));
         } else {
-            return view('admin.sub-company.sections.not-found.index', compact("sub_company_activity", "sub_company"));
+            return view('admin.sub-company.sections.not-found.index', compact('sec_slug', "comp_slug", "sub_company"));
         }
     }
 

@@ -33,7 +33,7 @@ const VideosPage = () => {
         : (document.body.style.overflowY = "scroll");
 
     const videoCard =
-        videosApi &&
+        videosApi?.[0] &&
         videosApi.map((video) => {
             const { id = "", link = "" } = video;
             return (

@@ -7,9 +7,9 @@ const InnerBanner = lazy(() => import("../forAll/InnerBanner"));
 const NotFoundPage = () => {
   const navigate = useNavigate();
 
-  setTimeout(() => {
-    navigate("/");
-  }, 1000);
+  // setTimeout(() => {
+  //   navigate("/");
+  // }, 1000);
   
   const innerBannerInfo = {
     pageName: "404 - Page Not Found",

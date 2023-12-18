@@ -73,12 +73,19 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-primary">
+                            
                             <div class="card-header">
+                               
               <h3 class="card-title float-left">{{$sub_company->company_name}} Members List</h3>
+              <a
+              style="margin-left:10px"
+              href="{{ route('sub-company.sections.index',$comp_slug) }}"
+               class="btn btn-danger float-right"></i> Back</a>
                             <a
-                            href="{{ route('activity.create') }}"
+                            href="{{ route('sub-company.team.create',[$sec_slug, $comp_slug]) }}"
                              class="btn btn-success float-right"><i class="fa fa-plus"></i> Create</a>
-                              {{-- <h3 class="card-title float-right"><a class="btn btn-info text-white" href="{{ route('team.create') }}"><i class="fa fa-plus"></i> Create</a> </h3> --}}
+                             
+                             {{-- <h3 class="card-title float-right"><a class="btn btn-info text-white" href="{{ route('team.create') }}"><i class="fa fa-plus"></i> Create</a> </h3> --}}
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -122,7 +129,7 @@
                                             ">
                                             <i class="fa fa-trash"></i>
                                             <form
-                                            id="destroy{{ $value->id }}" class="d-none" action="{{ route('team.delete', $value->id) }}" method="POST">
+                                            id="destroy{{ $value->id }}" class="d-none" action="{{ route('sub-company.team.delete', $value->id) }}" method="POST">
                                                 @csrf
                                             </form>
                                         </button>

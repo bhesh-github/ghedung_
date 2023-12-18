@@ -77,12 +77,16 @@
                           <h3 class="card-title float-left">{{$sub_company->company_name}} Member</h3>
                         </div>
                       {{-- <form id="product-form" action="{{ route('sub-company.team.update', $sub_company_team->id) }}" method="POST" --}}
-                      <form id="product-form" action="{{ route('sub-company.team.update', ['id'=>$sub_company_team->id,'comp_slug'=>$sub_company->slug, 'sec_slug'=>$sec_slug]) }}" method="POST"
+                      <form id="product-form" 
+                      action="{{ route('sub-company.team.update') }}"     
+                      method="POST"
                         enctype="multipart/form-data">
                         {{-- ['id'=>$value->id,'comp_slug'=> $sub_company->slug, 'sec_slug'=> $sec_slug] --}}
                         @csrf
-                        @method('patch') 
+                        {{-- @method('patch')  --}}
                         <input type="hidden" name="id" value="{{ $sub_company_team->id }}">
+                        <input type="hidden" name="section_slug" value="{{ $sec_slug }}">
+                        <input type="hidden" name="company_slug" value="{{ $comp_slug}}">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card card-primary">

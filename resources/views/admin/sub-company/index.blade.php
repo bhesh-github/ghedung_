@@ -11,8 +11,8 @@
       <div class="row">
         <div class="col-md-12 text-right">
           <p><a 
-            {{-- href="{{ route('home') }}" --}}
-            >Home</a> / Sub Company</p>
+            href="{{ route('admin.home') }}"
+            >Home</a> / Sub Companies</p>
         </div>
         <!-- left column -->
         <div class="col-md-12">

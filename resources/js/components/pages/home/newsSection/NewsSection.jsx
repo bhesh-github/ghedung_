@@ -4,9 +4,11 @@ import NewsCard from "../../../forAll/NewsCard";
 import { useNavigate } from "react-router-dom";
 
 const NewsSection = () => {
-    const navigate = useNavigate();
+    const [sliceNum, setSliceNum] = useState(6);
 
     const [newsApi, setNewsApi] = useState();
+
+    const navigate = useNavigate();
 
     const fetchNews = async () => {
         const res = await axios.get(
@@ -16,7 +18,10 @@ const NewsSection = () => {
         setNewsApi(data);
     };
 
+    const windowWidth = window.innerWidth;
+
     useEffect(() => {
+        windowWidth <= 550 ? setSliceNum(2) : setSliceNum(6);
         fetchNews();
     }, []);
 
@@ -25,7 +30,7 @@ const NewsSection = () => {
             <div className="news-contents">
                 <div className="heading-wrapper">
                     <div className="title">न्यूजहरु</div>
-                    {newsApi?.length > 6 && (
+                    {newsApi?.length > sliceNum && (
                         <div
                             className="see-more"
                             onClick={() => {
@@ -37,8 +42,8 @@ const NewsSection = () => {
                     )}
                 </div>
                 <div className="news-cards">
-                    {newsApi &&
-                        newsApi.slice(0, 6).map((news) => {
+                    {newsApi?.[0] &&
+                        newsApi.slice(0, sliceNum).map((news) => {
                             return <NewsCard key={news?.id} news={news} />;
                         })}
                 </div>

@@ -42,6 +42,9 @@
             }
             .desc {
                 font-size: 18px;
+                img {
+                    width: 100% !important;
+                }
             }
             @media screen and (max-width: 550px) {
                 .heading-wrapper {

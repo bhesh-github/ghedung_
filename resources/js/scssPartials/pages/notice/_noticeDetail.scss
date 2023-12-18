@@ -87,6 +87,11 @@
             .show-image {
                 width: 100%;
             }
+            .desc {
+                img {
+                    width: 100% !important;
+                }
+            }
         }
         .side-column {
             display: flex;

@@ -72,28 +72,28 @@
             <div class="container-fluid">
                 <div class="col-md-12 text-right">
                     <p><a 
-                        {{-- href="{{ route('home') }}" --}}
-                        >Home</a> / <a 
-                        href="{{ route('activity.index') }}"
-                        >Activity</a> / Add</p>
+                        href="{{ route('admin.home') }}"
+                        >Home</a> / Add</p>
                 </div>
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title float-left">Edit Activity</h3>
-                        <a href="{{ route('activity.index') }}" class="btn btn-danger float-right">Back</a>
+                        <h3 class="card-title float-left">Edit {{$sub_company->company_name}} Activity</h3>
+                        {{-- <a href="{{ route('activity.index') }}" class="btn btn-danger float-right">Back</a> --}}
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ route('activity.update') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('sub-company.activity.update') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="id" value="{{ $activity->id }}">
+                        <input type="hidden" name="id" value="{{ $sub_company_activity->id }}">
+                        <input type="hidden" name="section_slug" value="{{ $sec_slug }}">
+                        <input type="hidden" name="company_slug" value="{{ $comp_slug}}">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="title">Title</label>
                                         <input type="text" class="form-control" name="title" id="title"
-                                            value="{{ $activity->title }}" placeholder="Enter Title" required>
+                                            value="{{ $sub_company_activity->title }}" placeholder="Enter Title" required>
                                         @error('title')
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
@@ -103,7 +103,7 @@
                                     <div class="form-group">
                                         <label for="subtitle">Subtitle</label>
                                         <input type="text" class="form-control" name="subtitle" id="subtitle"
-                                            value="{{ $activity->subtitle }}" placeholder="Enter Subtitle" required>
+                                            value="{{ $sub_company_activity->subtitle }}" placeholder="Enter Subtitle" required>
                                         @error('subtitle')
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
@@ -119,7 +119,7 @@
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
                                         <div class="preview mt-2">
-                                            <img src="{{ asset('upload/images/activity/' . $activity['image']) }}"
+                                            <img src="{{ asset('upload/images/sub_company/activity/' . $sub_company_activity['image']) }}"
                                                 id="file-ip-1-preview" width="200px">
                                         </div>
                                     </div>
@@ -128,7 +128,7 @@
                                     <div class="form-group">
                                         <label for="activity_post_date">Activity Post Date</label>
                                         <input type="text" class="form-control" name="activity_post_date" id="activity_post_date"
-                                            value="{{  $activity->activity_post_date }}" placeholder="Enter activity Post Date" required>
+                                            value="{{  $sub_company_activity->activity_post_date }}" placeholder="Enter activity Post Date" required>
                                         @error('activity_post_date')
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
@@ -137,7 +137,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="description">Description</label>
-                                        <textarea id="summernote" name="description" value="" placeholder="Enter Description Here" required>{{ $activity->description }}</textarea>
+                                        <textarea id="summernote" name="description" value="" placeholder="Enter Description Here" required>{{ $sub_company_activity->description }}</textarea>
                                         @error('description')
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
@@ -148,7 +148,7 @@
                                     <div class="form-group">
                                         <label for="publish">Publish?</label><br>
                                         <label class="switch">
-                                            @if ($activity->status == 'on')
+                                            @if ($sub_company_activity->status == 'on')
                                                 <input type="checkbox" class="form-control" name="status" checked>
                                             @else
                                                 <input type="checkbox" class="form-control" name="status">

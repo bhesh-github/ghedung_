@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\SubCompanyTeam;
 use App\Models\SubCompany;
+use App\Models\SubCompanySection;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -21,10 +23,12 @@ class SubCompanyTeamController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($sec_slug, $comp_slug)
     {
-        $team = SubCompanyTeam::orderby('created_at', 'asc')->get();
-        return view('admin.sub-company.team.create', compact("team"));
+        $sub_company_section = SubCompanySection::where('slug', $sec_slug)->first();
+        $sub_company = SubCompany::where('slug', $comp_slug)->first();
+        return view('admin.sub-company.sections.team.create', compact("sub_company_section", "sub_company"));
+
     }
 
     /**
@@ -33,11 +37,12 @@ class SubCompanyTeamController extends Controller
     public function store(Request $request)
     {
         $team = new SubCompanyTeam;
+        $team->section_id = $request->section_id;
+        $team->company_id = $request->company_id;
         $team->name = $request->name;
         $team->email = $request->email;
         $team->phone = $request->phone;
         $team->designation = $request->designation;
-        $team->introduction = $request->introduction;
         if ($request->hasfile('image')) {
             $file = $request->file('image');
             $filename1 = $file->getClientOriginalName(); //getting image extension
@@ -54,7 +59,8 @@ class SubCompanyTeamController extends Controller
             $team->status = "off";
         }
         $team->save();
-        // return redirect()->route('team.index')->with('success', 'New Member has been added successfully');
+
+        return redirect()->route('sub-company.section', [$request->section_slug, $request->company_slug])->with('success', 'New Member has been added successfully');
     }
 
     /**
@@ -73,14 +79,13 @@ class SubCompanyTeamController extends Controller
         // comp_slug
         $sub_company_team = SubCompanyTeam::find($id);
         $sub_company = SubCompany::where('slug', $comp_slug)->first();
-
-        return view('admin.sub-company.sections.team.edit', compact("sub_company_team", "sub_company", "sec_slug"));
+        return view('admin.sub-company.sections.team.edit', compact("sec_slug", "comp_slug", "sub_company_team", "sub_company"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $comp_slug, $sec_slug)
+    public function update(Request $request)
     {
         $team = SubCompanyTeam::find($request->id);
         $team->name = $request->name;
@@ -104,8 +109,9 @@ class SubCompanyTeamController extends Controller
             $team->status = "off";
         }
         $team->update();
+        return redirect()->route('sub-company.section', ['sec_slug' => $request->section_slug, 'comp_slug' => $request->company_slug])->with('success', 'Member has been updated successfully');
         // return redirect()->route('team.index')->with('success', 'Member has been updated successfully');
-        return view('admin.sub-company.sections.team.index', compact("sec_slug", "sub_company_team", "sub_company"))->with('success', 'Member has been updated successfully');
+        // return view('admin.sub-company.sections.team.index', compact("sec_slug", "sub_company_team", "sub_company"))->with('success', 'Member has been updated successfully');
 
 
     }

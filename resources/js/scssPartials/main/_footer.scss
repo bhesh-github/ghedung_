@@ -16,8 +16,9 @@
         gap: 1em;
         .social-icons {
             display: flex;
+            width: max-content;
+            column-gap: 1em;
             .icons-wrapper {
-                margin-left: 1em;
                 display: flex;
                 align-items: center;
                 justify-content: center;

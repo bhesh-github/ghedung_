@@ -29,7 +29,7 @@ const VideosSection = () => {
                         <div
                             className="see-more"
                             onClick={() => {
-                                navigate("/videos");
+                                navigate("/gallery/videos");
                             }}
                         >
                             थप हेर्नुहोस्

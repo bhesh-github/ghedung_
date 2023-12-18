@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-
 import { lazy } from "react";
 const RelatedBar = lazy(() => import("../../forAll/RelatedBar"));
 
@@ -46,16 +45,17 @@ const ActivityDetail = ({ relatedBarData }) => {
                         }}
                     />
                 </div>
-                <RelatedBar
-                    relatedBarData={activityDetailApi?.relateds}
-                    navigateSlug="activity-detail"
-                    barHeadText="Activities"
-                    seeMoreBtn="activities"
-                />
+                {activityDetailApi?.relateds?.[0] && (
+                    <RelatedBar
+                        relatedBarData={activityDetailApi?.relateds}
+                        navigateSlug="activity-detail"
+                        barHeadText="Activities"
+                        seeMoreBtn="activities"
+                    />
+                )}
             </div>
         </div>
     );
 };
 
 export default ActivityDetail;
-

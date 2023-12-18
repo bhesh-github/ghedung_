@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\NavController;
 use App\Http\Controllers\Api\V1\CompanyProfileController;
 use App\Http\Controllers\Api\V1\HomeController;
 use App\Http\Controllers\Api\V1\ContactController;
@@ -12,6 +13,12 @@ use App\Http\Controllers\Api\V1\ArticleController;
 use App\Http\Controllers\Api\V1\NewsController;
 use App\Http\Controllers\Api\V1\NoticeController;
 use App\Http\Controllers\Api\V1\ActivityController;
+use App\Http\Controllers\Api\V1\SubCompanyController;
+use App\Http\Controllers\Api\V1\SubCompanyTeamController;
+use App\Http\Controllers\Api\V1\SubCompanyActivityController;
+
+
+
 
 
 
@@ -34,6 +41,9 @@ use Illuminate\Support\Facades\Route;
 
 // Company Profile
 Route::get('/company-profile', [CompanyProfileController::class, 'profile']);
+
+// Navbar
+Route::get('/nav/sub-companies', [NavController::class, 'subCompanies']);
 
 // Home
 Route::get('/sliders', [HomeController::class, 'slider']);
@@ -78,6 +88,16 @@ Route::get('/article/details/{slug}', [ArticleController::class, 'details']);
 // Activities
 Route::get('/activities/list', [ActivityController::class, 'activities']);
 Route::get('/activity/details/{slug}', [ActivityController::class, 'details']);
+
+// Sub Companies
+Route::get('/sub-company/details/{slug}', [SubCompanyController::class, 'details']);
+
+// Sub Companies Teams
+Route::get('/sub-company/teams/{slug}', [SubCompanyTeamController::class, 'teams']);
+
+// Sub Companies Activities
+Route::get('/sub-company/activities/list/{slug}', [SubCompanyActivityController::class, 'activities']);
+Route::get('/sub-company/activity/details/{companySlug}/{activitySlug}', [SubCompanyActivityController::class, 'details']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

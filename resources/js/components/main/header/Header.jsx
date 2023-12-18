@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { SlArrowRight } from "react-icons/sl";
+import { BiCaretDown } from "react-icons/bi";
 
 export default function SearchAppBar({ navItems }) {
     const [isDropdownContainer, setIsDropdownContainer] = useState("");
@@ -11,6 +12,8 @@ export default function SearchAppBar({ navItems }) {
         slugNavLinkId: null,
     });
     const [companyProfileApi, setCompanyProfileApi] = useState();
+    const [subCompaniesListApi, setSubCompaniesListApi] = useState();
+
     const handleContainerContentClick = () => {
         setIsDropdownContainer("none");
         setTimeout(() => {
@@ -20,16 +23,24 @@ export default function SearchAppBar({ navItems }) {
 
     const navigate = useNavigate();
 
-    const fetchCompnayProfile = async () => {
+    const fetchCompanyProfile = async () => {
         const res = await axios.get(
             import.meta.env.VITE_API_BASE_URL + "/api/company-profile"
         );
         const data = await res.data;
         setCompanyProfileApi(data);
     };
+    const fetchSubCompaniesListApi = async () => {
+        const res = await axios.get(
+            import.meta.env.VITE_API_BASE_URL + "/api/nav/sub-companies"
+        );
+        const data = await res.data;
+        setSubCompaniesListApi(data);
+    };
 
     useEffect(() => {
-        fetchCompnayProfile();
+        fetchCompanyProfile();
+        fetchSubCompaniesListApi();
     }, []);
 
     return (
@@ -38,15 +49,17 @@ export default function SearchAppBar({ navItems }) {
                 <div className="nav-wrapper">
                     <div className="top-nav">
                         <img
-                            src={companyProfileApi?.company_logo_link}
+                            src={companyProfileApi?.company_flag_link}
                             alt=""
-                            className="c-flag"
+                            className="c-logo"
                             onClick={() => {
                                 navigate("/");
                             }}
                         />
                         <div className="mid-wrapper">
-                            <div className="tibetian-lipi">༡༣༡༤</div>
+                            <div className="tibetian-lipi">
+                                {companyProfileApi?.tibetan_lipi}
+                            </div>
                             <div className="name">
                                 {/* {companyProfileApi?.company_name} */}
                                 नेपाल तामाङ घेदुङ
@@ -57,9 +70,9 @@ export default function SearchAppBar({ navItems }) {
                             </div>
                         </div>
                         <img
-                            src={companyProfileApi?.company_flag_link}
+                            src={companyProfileApi?.company_logo_link}
                             alt=""
-                            className="c-logo"
+                            className="c-flag"
                             onClick={() => {
                                 navigate("/");
                             }}
@@ -82,6 +95,7 @@ export default function SearchAppBar({ navItems }) {
                                             <div className="dropdown" key={id}>
                                                 <button className="dropbtn">
                                                     {text}
+                                                    <BiCaretDown className="drop-caret-icon" />
                                                 </button>
                                                 <div
                                                     className="hidden-dropdown"
@@ -102,9 +116,100 @@ export default function SearchAppBar({ navItems }) {
                                                                     return (
                                                                         <div
                                                                             onClick={() => {
-                                                                                console.log(
-                                                                                    "x1"
+                                                                                navigate(
+                                                                                    `${navlinkPath}/${slug}`
                                                                                 );
+                                                                                handleContainerContentClick();
+                                                                            }}
+                                                                            key={
+                                                                                id
+                                                                            }
+                                                                            className="drop-item"
+                                                                        >
+                                                                            {
+                                                                                title
+                                                                            }
+                                                                        </div>
+                                                                    );
+                                                                }
+                                                            )}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        );
+                                    } else if (itemType === "sub-company") {
+                                        return (
+                                            <div className="dropdown" key={id}>
+                                                <button className="dropbtn">
+                                                    {text}
+                                                    <BiCaretDown className="drop-caret-icon" />
+                                                </button>
+                                                <div
+                                                    className="hidden-dropdown"
+                                                    style={{
+                                                        display:
+                                                            isDropdownContainer,
+                                                    }}
+                                                >
+                                                    <div className="dropdown-content">
+                                                        {subCompaniesListApi?.[0] &&
+                                                            subCompaniesListApi.map(
+                                                                (item) => {
+                                                                    const {
+                                                                        id = "",
+                                                                        company_name = "",
+                                                                        slug = "",
+                                                                    } = item;
+                                                                    return (
+                                                                        <div
+                                                                            onClick={() => {
+                                                                                navigate(
+                                                                                    `${navlinkPath}/${slug}`
+                                                                                );
+                                                                                handleContainerContentClick();
+                                                                            }}
+                                                                            key={
+                                                                                id
+                                                                            }
+                                                                            className="drop-item"
+                                                                        >
+                                                                            {
+                                                                                company_name
+                                                                            }
+                                                                        </div>
+                                                                    );
+                                                                }
+                                                            )}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        );
+                                    } else {
+                                        return (
+                                            <div className="dropdown" key={id}>
+                                                <button className="dropbtn">
+                                                    {text}
+                                                    <BiCaretDown className="drop-caret-icon" />
+                                                </button>
+                                                <div
+                                                    className="hidden-dropdown"
+                                                    style={{
+                                                        display:
+                                                            isDropdownContainer,
+                                                    }}
+                                                >
+                                                    <div className="dropdown-content">
+                                                        {sublinks &&
+                                                            sublinks.map(
+                                                                (item) => {
+                                                                    const {
+                                                                        id = "",
+                                                                        title = "",
+                                                                        slug = "",
+                                                                    } = item;
+                                                                    return (
+                                                                        <div
+                                                                            onClick={() => {
                                                                                 navigate(
                                                                                     `${navlinkPath}/${slug}`
                                                                                 );
@@ -157,7 +262,13 @@ export default function SearchAppBar({ navItems }) {
                 aria-labelledby="offcanvasRightLabel"
             >
                 <div className="offcanvas-header">
-                    <div className="company-title-wrapper">
+                    <div
+                        className="company-title-wrapper"
+                        data-bs-dismiss="offcanvas"
+                        onClick={() => {
+                            navigate("/");
+                        }}
+                    >
                         <img
                             src={companyProfileApi?.company_logo_link}
                             className="company-logo"
@@ -231,18 +342,155 @@ export default function SearchAppBar({ navItems }) {
                                             >
                                                 {text}
                                                 <SlArrowRight
-                                                    className={`indent-arrow
-                          ${
-                              id === selectedNavLinkDetail?.slugNavLinkId &&
-                              "active-indent"
-                          }
-                          `}
+                                                    className="indent-arrow"
+
+                                                    //                             className={`indent-arrow
+                                                    //   ${
+                                                    //       id === selectedNavLinkDetail?.slugNavLinkId &&
+                                                    //       "active-indent"
+                                                    //   }
+                                                    //   `}
                                                 />
                                             </div>
-
                                             <div
                                                 className="collapse sublink-wrapper"
                                                 id="samiti"
+                                            >
+                                                {sublinks.map((item) => {
+                                                    const {
+                                                        id = "",
+                                                        title = "",
+                                                        slug = "",
+                                                    } = item;
+                                                    return (
+                                                        <div
+                                                            data-bs-dismiss="offcanvas"
+                                                            className="sublink-item"
+                                                            key={id}
+                                                            onClick={() => {
+                                                                navigate(
+                                                                    `${navigateLink}/${slug}`
+                                                                );
+                                                            }}
+                                                        >
+                                                            {title}
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    );
+                                } else if (itemType === "sub-company") {
+                                    return (
+                                        <div
+                                            key={id}
+                                            className="dropdown-wrapper"
+                                            onClick={() => {
+                                                setSelectedNavLinkDetail(
+                                                    (prev) => ({
+                                                        ...prev,
+                                                        slugNavLinkId:
+                                                            selectedNavLinkDetail &&
+                                                            selectedNavLinkDetail.slugNavLinkId ===
+                                                                id
+                                                                ? null
+                                                                : id,
+                                                    })
+                                                );
+                                            }}
+                                        >
+                                            <div
+                                                className="drop-nav-item nav-item"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#anya"
+                                                aria-expanded="false"
+                                                aria-controls="collapseExample"
+                                            >
+                                                {text}
+                                                <SlArrowRight
+                                                    className="indent-arrow"
+                                                    //                             className={`indent-arrow
+                                                    //   ${
+                                                    //       id === selectedNavLinkDetail?.slugNavLinkId &&
+                                                    //       "active-indent"
+                                                    //   }
+                                                    //   `}
+                                                />
+                                            </div>
+                                            <div
+                                                className="collapse sublink-wrapper"
+                                                id="anya"
+                                            >
+                                                {subCompaniesListApi?.[0] &&
+                                                    subCompaniesListApi.map(
+                                                        (item) => {
+                                                            const {
+                                                                id = "",
+                                                                company_name = "",
+                                                                slug = "",
+                                                            } = item;
+                                                            return (
+                                                                <div
+                                                                    data-bs-dismiss="offcanvas"
+                                                                    className="sublink-item"
+                                                                    key={id}
+                                                                    onClick={() => {
+                                                                        navigate(
+                                                                            `${navigateLink}/${slug}`
+                                                                        );
+                                                                    }}
+                                                                >
+                                                                    {
+                                                                        company_name
+                                                                    }
+                                                                </div>
+                                                            );
+                                                        }
+                                                    )}
+                                            </div>
+                                        </div>
+                                    );
+                                } else {
+                                    return (
+                                        <div
+                                            key={id}
+                                            className="dropdown-wrapper"
+                                            onClick={() => {
+                                                setSelectedNavLinkDetail(
+                                                    (prev) => ({
+                                                        ...prev,
+                                                        slugNavLinkId:
+                                                            selectedNavLinkDetail &&
+                                                            selectedNavLinkDetail.slugNavLinkId ===
+                                                                id
+                                                                ? null
+                                                                : id,
+                                                    })
+                                                );
+                                            }}
+                                        >
+                                            <div
+                                                className="drop-nav-item nav-item"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target={`#random${id}`}
+                                                aria-expanded="false"
+                                                aria-controls="collapseExample"
+                                            >
+                                                {text}
+                                                <SlArrowRight
+                                                    className="indent-arrow"
+
+                                                    //                             className={`indent-arrow
+                                                    //   ${
+                                                    //       id === selectedNavLinkDetail?.slugNavLinkId &&
+                                                    //       "active-indent"
+                                                    //   }
+                                                    //   `}
+                                                />
+                                            </div>
+                                            <div
+                                                className="collapse sublink-wrapper"
+                                                id={`random${id}`}
                                             >
                                                 {sublinks.map((item) => {
                                                     const {
@@ -320,6 +568,19 @@ SearchAppBar.defaultProps = {
             text: "ग्यालेरी",
             // linkType: "archive",
             navigateLink: "gallery",
+            itemType: "gallery",
+            sublinks: [
+                {
+                    id: 0,
+                    title: "फोटोहरु",
+                    slug: "images",
+                },
+                {
+                    id: 1,
+                    title: "भिडियोहरु",
+                    slug: "videos",
+                },
+            ],
         },
         {
             id: 5,
@@ -333,11 +594,12 @@ SearchAppBar.defaultProps = {
             // linkType: "videos",
             navigateLink: "activities",
         },
-        // {
-        //     id: 7,
-        //     text: "प्रवास",
-        //     // linkType: "videos",
-        //     navigateLink: "prawash",
-        // },
+        {
+            id: 7,
+            text: "अन्य",
+            itemType: "sub-company",
+            navigateLink: "sub-company",
+            sublinks: [],
+        },
     ],
 };

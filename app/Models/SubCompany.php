@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class SubCompany extends Model
 {
     use HasFactory;
+    protected $appends = ['company_logo_link'];
+
+    public function getCompanyLogoLinkAttribute()
+    {
+        return asset("upload/images/sub_company/company_profile/" . $this->company_logo);
+    }
 }

@@ -3,14 +3,11 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import GalleryCarousel from "./GalleryCarousel";
 import { VscClose } from "react-icons/vsc";
-import img2 from "../../../images/pages/home/newsSection/news2.jpg";
-import img3 from "../../../images/pages/home/newsSection/news3.jpg";
-import img4 from "../../../images/pages/home/newsSection/news4.jpg";
-import img5 from "../../../images/pages/home/newsSection/news5.jpg";
+
 import { lazy } from "react";
 const InnerBanner = lazy(() => import("../../forAll/InnerBanner"));
 
-const GalleryImages = ({ images }) => {
+const GalleryImages = () => {
     const [imagesApi, setImagesApi] = useState();
 
     const { gallerySlug = "" } = useParams();
@@ -98,6 +95,3 @@ const GalleryImages = ({ images }) => {
 };
 
 export default GalleryImages;
-GalleryImages.defaultProps = {
-    images: [img2, img3, img4, img5, img2, img3, img4, img5],
-};

@@ -340,7 +340,7 @@
                 </p>
               </a>
           </li>
-          {{-- <li class="nav-item">
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
@@ -364,7 +364,9 @@
                 </a>
               </li>
             </ul>
-        </li> --}}
+          
+        </li>
+      <li style="height:200px"></li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

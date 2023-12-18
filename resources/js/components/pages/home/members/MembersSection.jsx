@@ -4,9 +4,10 @@ import MemberCard from "../../../forAll/MembersCard";
 import { useNavigate } from "react-router-dom";
 
 const MembersSection = () => {
-    const navigate = useNavigate();
     const [sliceNum, setSliceNum] = useState(6);
     const [teamsApi, setTeamsApi] = useState();
+
+    const navigate = useNavigate();
 
     const fetchTeams = async () => {
         const res = await axios.get(
@@ -23,7 +24,7 @@ const MembersSection = () => {
     }, []);
 
     const mCard =
-        teamsApi &&
+        teamsApi?.[0] &&
         teamsApi
             .slice(0, sliceNum)
             .map((member) => <MemberCard cardInfo={member} key={member?.id} />);
@@ -33,7 +34,7 @@ const MembersSection = () => {
             <div className="in-wrapper">
                 <div className="heading-wrapper">
                     <div className="title">हाम्रो टिम</div>
-                    {teamsApi && teamsApi.length > sliceNum && (
+                    {teamsApi?.length > sliceNum && (
                         <div
                             className="see-more"
                             onClick={() => {
@@ -53,5 +54,3 @@ const MembersSection = () => {
 };
 
 export default MembersSection;
-
-

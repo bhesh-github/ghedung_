@@ -19,9 +19,13 @@
           <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title float-left">{{$sub_company->company_name}} Activity List</h3>
+              <h3 class="card-title float-left">{{$sub_company->company_name}} Activities List</h3>
               <a
-               href="{{ route('activity.create') }}"
+              style="margin-left:10px"
+              href="{{ route('sub-company.sections.index',$comp_slug) }}"
+               class="btn btn-danger float-right"></i> Back</a>
+              <a
+               href="{{ route('sub-company.activity.create',[$sec_slug, $comp_slug]) }}"
                 class="btn btn-success float-right"><i class="fa fa-plus"></i> Create</a>
             </div>
             <!-- /.card-header -->
@@ -63,21 +67,20 @@
                         <td class="text-center">
                           @if ($value->status == "on")
                             <a 
-                            href="{{ route('activity.status',$value->id) }}" 
+                            href="{{ route('sub-company.activity.status',$value->id) }}" 
                             class="btn btn-success btn-sm" onclick="return confirm('Are you sure want to continue?')">On</a>
                           @else
                             <a
-                             href="{{ route('activity.status',$value->id) }}"
+                             href="{{ route('sub-company.activity.status',$value->id) }}"
                               class="btn btn-danger btn-sm" onclick="return confirm('Are you sure want to continue?')">Off</a>
                           @endif
                         </td>
                         <td>
                             <a
-                             href="{{ route('activity.edit',$value['id']) }}" 
+                             href="{{ route('sub-company.activity.edit',['id'=>$value->id,'comp_slug'=> $sub_company->slug, 'sec_slug'=> $sec_slug]) }}" 
                              class="badge badge-warning" ><i class="fa fa-edit"></i> Edit</a>
-
                               <form 
-                              action="{{ route('activity.delete') }}"
+                              action="{{ route('sub-company.activity.delete') }}"
                                method="post" class="mt-1">
                                 @csrf
                                 <input type="hidden" name="id" id="id" value="{{ $value['id'] }}">

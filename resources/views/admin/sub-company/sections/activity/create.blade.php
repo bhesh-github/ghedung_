@@ -74,25 +74,27 @@
                 <div class="col-md-12 text-right">
                     <p><a 
                         {{-- href="{{ route('home') }}" --}}
-                        >Home</a> / <a 
-                        href="{{ route('activity.index') }}"
-                        >Activity</a> / Add</p>
+                        >Home</a> / Add</p>
                 </div>
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title float-left">Add Activity</h3>
-                        <a
+                        <h3 class="card-title float-left">Add {{$sub_company->company_name}} Activity</h3>
+                        {{-- <a
                          href="{{ route('activity.index') }}" 
-                         class="btn btn-danger float-right">Back</a>
+                         class="btn btn-danger float-right">Back</a> --}}
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form 
-                    action="{{ route('activity.store') }}"
+                    action="{{ route('sub-company.activity.store') }}"
                      method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="row">
+                                <input type="hidden"  name="section_id" class="form-control" value={{$sub_company_section->id}}>
+                                <input type="hidden"  name="section_slug" class="form-control" value={{$sub_company_section->slug}}>
+                                <input type="hidden" name="company_id" class="form-control" value={{$sub_company->id}}>
+                                <input type="hidden" name="company_slug" class="form-control" value={{$sub_company->slug}}>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="title">Title</label>

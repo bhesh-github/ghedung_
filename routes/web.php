@@ -234,12 +234,29 @@ Route::prefix('admin')->group(function () {
     Route::prefix('/sub-company')->group(function () {
         Route::controller(SubCompanyTeamController::class)->group(function () {
             // Route::get('/team', 'index')->name('team.index');
-            Route::get('/team/create', 'create')->name('sub-company.team.create');
+            Route::get('/team/create/${sec_slug}/${comp_slug}', 'create')->name('sub-company.team.create');
             Route::post('/team/add', 'store')->name('sub-company.team.store');
             Route::get('/team/edit/{id}/${comp_slug}/${sec_slug}', 'edit')->name('sub-company.team.edit');
-            Route::post('/team/update/${id}/${comp_slug}/{sec_slug}', 'update')->name('sub-company.team.update');
+            Route::post('/team/update', 'update')->name('sub-company.team.update');
             Route::post('/team/delete/${id}', 'destroy')->name('sub-company.team.delete');
             Route::get('/team/status/change/{id}', 'changeStatus')->name('sub-company.team.status');
+            // 
+        });
+    });
+
+    // Sub Company Activity
+    Route::prefix('/sub-company')->group(function () {
+        Route::controller(SubCompanyActivityController::class)->group(function () {
+            // Route::get('/activity', 'index')->name('activity.index');
+            Route::get('/activity/create/${sec_slug}/${comp_slug}', 'create')->name('sub-company.activity.create');
+
+            // 
+            Route::post('/activity/add', 'store')->name('sub-company.activity.store');
+            Route::get('/activity/edit/{id}/${comp_slug}/${sec_slug}', 'edit')->name('sub-company.activity.edit');
+            Route::post('/activity/update', 'update')->name('sub-company.activity.update');
+            Route::post('/activity/delete', 'destroy')->name('sub-company.activity.delete');
+            Route::get('/activity/status/change/{id}', 'changeStatus')->name('sub-company.activity.status');
+            // 
         });
     });
 
@@ -258,7 +275,7 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('{path1}/{path2?}', function () {
+Route::get('{path1}/{path2?}/{path3?}/{path4?}/{path5?}/{path6?}', function () {
     return view('index');
 });
 

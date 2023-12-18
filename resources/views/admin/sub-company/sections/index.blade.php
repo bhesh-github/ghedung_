@@ -18,6 +18,10 @@
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title float-left">{{$sub_company->company_name}} Sections</h3>
+              <a
+              style="margin-left:10px"
+              href="{{ route('sub-company.index') }}" 
+               class="btn btn-danger float-right"></i> Back</a>
             </div>
             <!-- /.card-header -->
             <table id="datatable" class="table table-bordered table-striped">
@@ -36,6 +40,8 @@
                         <td>{{ $value->section_name }}</td>
                       <td>
                         <a href="{{ route('sub-company.section', ['sec_slug' => $value->slug, 'comp_slug' => $sub_company->slug]) }}" class="btn btn-info btn-sm">
+
+                          
                           <i class="fa fa-eye"></i>
                       </a>
                     {{-- </td>

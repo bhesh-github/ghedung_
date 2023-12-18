@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+  @php
+      $profile = \App\Models\CompanyProfile::first();
+  @endphp
   <head>
     <meta charset="utf-8" />
-    {{-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico.png" /> --}}
-    <link rel="icon" href="/favicon.ico.png" />
+    <link rel="icon" href="{{asset('upload/images/company_profile/'.$profile->favicon)}}"/>
+    {{-- <link rel="icon" href="/favicon.ico.png" /> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Web site created using create-react-app"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    {{-- <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" /> --}}
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -54,10 +57,14 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Nepal Tamang Ghedung</title>
-    @php
+    {{-- <title>Nepal Tamang Ghedung</title> --}}
+    {{-- @php
     $profile = \App\Models\CompanyProfile::first();
-    @endphp
+    @endphp --}}
+   
+ <title>{{ $profile->company_name }}</title>
+ {{-- <link rel="icon" type="image/x-icon" href="{{asset('upload/images/company_profile/'. $profile->company_logo)}}"> --}}
+
     {{-- <title>{{ $profile ? $profile->name : old('name') }}</title> --}}
     {{-- <title>{{ $profile->company_name }}</title> --}}
 

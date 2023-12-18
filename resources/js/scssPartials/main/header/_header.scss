@@ -62,7 +62,6 @@
                     font-weight: 400;
                     font-family: "Noto Serif Tibetan", serif;
                     text-align: center;
-
                 }
                 .name {
                     color: $primaryDarkBlue;
@@ -264,11 +263,19 @@
             // -----------------dropdown----------------------
 
             .dropbtn {
+                display: flex;
+                gap: 1.5px;
+                align-items: center;
                 background-color: transparent;
                 font-size: 1.1rem;
                 border: none;
                 color: #fff;
                 color: $primaryDarkBlue;
+                .drop-caret-icon {
+                    width: 20px;
+                    height: 20px;
+                    margin-bottom: 2px;
+                }
             }
             .dropdown {
                 position: relative;
@@ -514,12 +521,13 @@
         margin: 0 1.5em;
     }
     .items-wrapper {
-        margin-top: 0.4em;
+        margin: 1em 0.5em 0;
         // padding-left: 1.5em;
         display: flex;
         flex-direction: column;
         gap: 1em;
         font-size: 18px;
+        overflow-y: auto;
         .nav-item {
             display: flex;
             align-items: center;

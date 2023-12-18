@@ -95,12 +95,14 @@ const ArticleDetail = () => {
                         }}
                     />
                 </div>
-                <RelatedBar
-                    relatedBarData={articleDetailApi?.relateds}
-                    navigateSlug="article-detail"
-                    barHeadText="Articles"
-                    seeMoreBtn="articles"
-                />
+                {articleDetailApi?.relateds?.[0] && (
+                    <RelatedBar
+                        relatedBarData={articleDetailApi?.relateds}
+                        navigateSlug="article-detail"
+                        barHeadText="Articles"
+                        seeMoreBtn="articles"
+                    />
+                )}
             </div>
         </div>
     );

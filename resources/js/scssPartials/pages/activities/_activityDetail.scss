@@ -52,6 +52,9 @@
                 text-indent: 50px;
                 font-size: 18px;
                 width: 100%;
+                img {
+                    width: 100% !important;
+                }
             }
             @media screen and (max-width: 550px) {
                 .desc {

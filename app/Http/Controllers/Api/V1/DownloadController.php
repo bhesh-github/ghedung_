@@ -10,8 +10,8 @@ class DownloadController extends Controller
 {
     public function downloads()
     {
-        $value = DownloadType::where('status', 'on')->with('downloads', function ($q) {
-            $q->where('status', 'on')->latest()->get();
+        $value = DownloadType::where('status', 'on')->with('downloads', function ($row) {
+            $row->where('status', 'on')->latest()->get();
         })->latest()->get();
         return response()->json($value);
     }

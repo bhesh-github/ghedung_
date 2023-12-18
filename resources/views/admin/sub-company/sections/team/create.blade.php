@@ -71,7 +71,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Add Member</h1>
+              <h1 class="m-0">Add {{$sub_company->company_name}}  Member</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -84,18 +84,17 @@
       </div>
     <section class="content-header">
     <div class="container-fluid">
-        <form id="product-form" action="{{ route('team.store') }}" method="POST" enctype="multipart/form-data">
+        <form id="product-form" action="{{ route('sub-company.team.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        <button class="btn btn-primary">Create <i class="bi bi-check"></i></button>
-                    </div>
-                </div>
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="form-row">
+                                <input type="hidden"  name="section_id" class="form-control" value={{$sub_company_section->id}}>
+                                <input type="hidden"  name="section_slug" class="form-control" value={{$sub_company_section->slug}}>
+                                <input type="hidden" name="company_id" class="form-control" value={{$sub_company->id}}>
+                                <input type="hidden" name="company_slug" class="form-control" value={{$sub_company->slug}}>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="name">Full Name</label>
