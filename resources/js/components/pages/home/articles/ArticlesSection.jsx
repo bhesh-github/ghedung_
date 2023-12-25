@@ -26,32 +26,34 @@ const ArticlesSection = () => {
 
     return (
         <div className="articles-section">
-            <div className="contents">
-                <div className="heading-wrapper">
-                    <div className="title">विचारहरु</div>
-                    {articlesApi?.length > 2 && (
-                        <div
-                            className="see-more"
-                            onClick={() => {
-                                navigate("/articles");
-                            }}
-                        >
-                            थप हेर्नुहोस्
-                        </div>
-                    )}
+            {articlesApi?.length > 0 && (
+                <div className="contents">
+                    <div className="heading-wrapper">
+                        <div className="title">विचारहरु</div>
+                        {articlesApi?.length > 2 && (
+                            <div
+                                className="see-more"
+                                onClick={() => {
+                                    navigate("/articles");
+                                }}
+                            >
+                                थप हेर्नुहोस्
+                            </div>
+                        )}
+                    </div>
+                    <div className="sec-by-date-wrapper">
+                        {articlesApi &&
+                            articlesApi
+                                .slice(0, 2)
+                                .map((article) => (
+                                    <ArticleCard
+                                        key={article?.id}
+                                        cardDetail={article}
+                                    />
+                                ))}
+                    </div>
                 </div>
-                <div className="sec-by-date-wrapper">
-                    {articlesApi &&
-                        articlesApi
-                            .slice(0, 2)
-                            .map((article) => (
-                                <ArticleCard
-                                    key={article?.id}
-                                    cardDetail={article}
-                                />
-                            ))}
-                </div>
-            </div>
+            )}
         </div>
     );
 };

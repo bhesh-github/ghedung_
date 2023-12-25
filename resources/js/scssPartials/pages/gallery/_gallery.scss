@@ -1,40 +1,3 @@
-// .overlay-wrapper {
-//     position: fixed;
-//     z-index: 999;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     .overlay {
-//         background-color: rgba(128, 128, 128, 0.393);
-//         width: 100vw;
-//         height: 100vh;
-//     }
-//     .close-icon {
-//         position: absolute;
-//         width: 30px;
-//         height: 30px;
-//         right: 1em;
-//         top: 1em;
-//         cursor: pointer;
-//         &:hover {
-//             color: #fff;
-//         }
-//     }
-//     .carousel-comp-wrapper {
-//         position: absolute;
-//         top: 50%;
-//         left: 50%;
-//         width: max-content;
-//         height: max-content;
-//         transform: translate(-50%, -50%);
-//         .carousel-comp {
-//             padding: 0;
-//             margin: 0;
-//         }
-//     }
-// }
-
 .gallery-page {
     display: flex;
     align-items: center;
@@ -86,7 +49,7 @@
                     }
                 }
                 .gallery-name {
-                    visibility: hidden;
+                    // visibility: hidden;
                     position: absolute;
                     background-color: rgba(0, 0, 0, 0.388);
                     width: 100%;
@@ -102,16 +65,16 @@
                         font-size: 25px;
                     }
                 }
-                &:hover {
-                    .gallery-name {
-                        visibility: visible;
-                    }
-                }
-                @media screen and (max-width: 550px) {
-                    .gallery-name {
-                        visibility: visible;
-                    }
-                }
+                // &:hover {
+                //     .gallery-name {
+                //         visibility: visible;
+                //     }
+                // }
+                // @media screen and (max-width: 550px) {
+                //     .gallery-name {
+                //         visibility: visible;
+                //     }
+                // }
             }
         }
         @media screen and (max-width: 1000px) {

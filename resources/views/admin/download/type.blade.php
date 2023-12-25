@@ -138,6 +138,9 @@
                             </table>
                             <!-- /.card -->
                         </div>
+                        <div class="row">
+                            {{$types->links('pagination::simple-bootstrap-4')}}
+                        </div>
                     </div>
                     <!--/.col (left) -->
 

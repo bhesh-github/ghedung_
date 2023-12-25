@@ -274,6 +274,16 @@
                 </ul>
             </li>
             <li class="nav-item">
+              <a
+               href="{{ route('samiti.index') }}"
+                class="nav-link">
+                <i class="nav-icon fa fa-info-circle"></i>
+                <p>
+                  Samiti (समिति)
+                </p>
+              </a>
+          </li>
+            <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                 <p>

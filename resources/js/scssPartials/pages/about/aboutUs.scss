@@ -53,114 +53,114 @@
                     font-size: 15px;
                 }
             }
-            .group-photo {
-                width: 100%;
-            }
-            .message {
-                margin-top: 120px;
-                .message-head {
-                    margin-top: 0em;
-                    border-bottom: 1px solid #000;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: baseline;
-                    font-weight: 600;
-                    font-size: 40px;
-                    color: $primaryDarkBlue;
-                }
-                @media screen and (max-width: 550px) {
-                    .message-head {
-                        font-size: 25px;
-                    }
-                }
-                .message-img-wrapper {
-                    width: 100%;
-                    margin-top: 40px;
-                    display: grid;
-                    grid-template-columns: 1.4fr 1fr;
-                    gap: 2em;
-                    .message-text {
-                        color: $primaryDarkBlue;
-                        font-size: 18px;
+            // .group-photo {
+            //     width: 100%;
+            // }
+            // .message {
+            //     margin-top: 120px;
+            //     .message-head {
+            //         margin-top: 0em;
+            //         border-bottom: 1px solid #000;
+            //         display: flex;
+            //         justify-content: space-between;
+            //         align-items: baseline;
+            //         font-weight: 600;
+            //         font-size: 40px;
+            //         color: $primaryDarkBlue;
+            //     }
+            //     @media screen and (max-width: 550px) {
+            //         .message-head {
+            //             font-size: 25px;
+            //         }
+            //     }
+            //     .message-img-wrapper {
+            //         width: 100%;
+            //         margin-top: 40px;
+            //         display: grid;
+            //         grid-template-columns: 1.4fr 1fr;
+            //         gap: 2em;
+            //         .message-text {
+            //             color: $primaryDarkBlue;
+            //             font-size: 18px;
 
-                        line-height: 30px;
-                        text-align: justify;
-                    }
-                    @media screen and (max-width: 550px) {
-                        .message-text {
-                            font-size: 15px;
-                        }
-                    }
-                    .adakshya-img {
-                        width: 100%;
-                    }
-                }
-                @media screen and (max-width: 900px) {
-                    .message-img-wrapper {
-                        grid-template-columns: 1fr;
-                        gap: 1em;
+            //             line-height: 30px;
+            //             text-align: justify;
+            //         }
+            //         @media screen and (max-width: 550px) {
+            //             .message-text {
+            //                 font-size: 15px;
+            //             }
+            //         }
+            //         .adakshya-img {
+            //             width: 100%;
+            //         }
+            //     }
+            //     @media screen and (max-width: 900px) {
+            //         .message-img-wrapper {
+            //             grid-template-columns: 1fr;
+            //             gap: 1em;
 
-                        .adakshya-img {
-                            width: 350px;
-                            grid-row-start: 1;
-                        }
-                    }
-                }
-                @media screen and (max-width: 550px) {
-                    .message-img-wrapper {
-                        margin-top: 15px;
-                    }
-                }
-                @media screen and (max-width: 375px) {
-                    .message-img-wrapper {
-                        .adakshya-img {
-                            width: 100%;
-                        }
-                    }
-                }
-            }
-            @media screen and (max-width: 550px) {
-                .message {
-                    margin-top: 60px;
-                }
-            }
-            .mission-vision-wrapper {
-                margin-top: 120px;
-                .mission-vision-head {
-                    margin-top: 0em;
-                    border-bottom: 1px solid #000;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: baseline;
-                    font-weight: 600;
-                    font-size: 40px;
-                    color: $primaryDarkBlue;
-                }
-                @media screen and (max-width: 550px) {
-                    .mission-vision-head {
-                        font-size: 25px;
-                    }
-                }
-                .mission-vision-text {
-                    margin-top: 40px;
-                    color: $primaryDarkBlue;
-                    font-size: 18px;
+            //             .adakshya-img {
+            //                 width: 350px;
+            //                 grid-row-start: 1;
+            //             }
+            //         }
+            //     }
+            //     @media screen and (max-width: 550px) {
+            //         .message-img-wrapper {
+            //             margin-top: 15px;
+            //         }
+            //     }
+            //     @media screen and (max-width: 375px) {
+            //         .message-img-wrapper {
+            //             .adakshya-img {
+            //                 width: 100%;
+            //             }
+            //         }
+            //     }
+            // }
+            // @media screen and (max-width: 550px) {
+            //     .message {
+            //         margin-top: 60px;
+            //     }
+            // }
+            // .mission-vision-wrapper {
+            //     margin-top: 120px;
+            //     .mission-vision-head {
+            //         margin-top: 0em;
+            //         border-bottom: 1px solid #000;
+            //         display: flex;
+            //         justify-content: space-between;
+            //         align-items: baseline;
+            //         font-weight: 600;
+            //         font-size: 40px;
+            //         color: $primaryDarkBlue;
+            //     }
+            //     @media screen and (max-width: 550px) {
+            //         .mission-vision-head {
+            //             font-size: 25px;
+            //         }
+            //     }
+            //     .mission-vision-text {
+            //         margin-top: 40px;
+            //         color: $primaryDarkBlue;
+            //         font-size: 18px;
 
-                    line-height: 30px;
-                    text-align: justify;
-                }
-            }
-            @media screen and (max-width: 550px) {
-                .mission-vision-wrapper {
-                    margin-top: 60px;
-                    @media screen and (max-width: 550px) {
-                        .mission-vision-text {
-                            margin-top: 15px;
-                            font-size: 15px;
-                        }
-                    }
-                }
-            }
+            //         line-height: 30px;
+            //         text-align: justify;
+            //     }
+            // }
+            // @media screen and (max-width: 550px) {
+            //     .mission-vision-wrapper {
+            //         margin-top: 60px;
+            //         @media screen and (max-width: 550px) {
+            //             .mission-vision-text {
+            //                 margin-top: 15px;
+            //                 font-size: 15px;
+            //             }
+            //         }
+            //     }
+            // }
         }
         @media screen and (max-width: 550px) {
             .sections-wrapper {

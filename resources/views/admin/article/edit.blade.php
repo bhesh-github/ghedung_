@@ -103,7 +103,7 @@
                                     <div class="form-group">
                                         <label for="subtitle">Subtitle</label>
                                         <input type="text" class="form-control" name="subtitle" id="subtitle"
-                                            value="{{ $article->subtitle }}" placeholder="Enter Subtitle" required>
+                                            value="{{ $article->subtitle }}" placeholder="Enter Subtitle">
                                         @error('subtitle')
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
@@ -215,6 +215,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+
     <script>
         $('textarea#summernote').summernote({
             placeholder: 'Write Description Here .......',

@@ -10,9 +10,9 @@ class DownloadController extends Controller
 {
     public function index()
     {
-        $downloads = Download::latest()->get();
-        $types = DownloadType::where('status','on')->get();
-        return view('admin.download.download', compact("downloads","types"));
+        $downloads = Download::oldest()->paginate(20);
+        $types = DownloadType::where('status', 'on')->oldest()->get();
+        return view('admin.download.download', compact("downloads", "types"));
     }
 
     /**
@@ -33,19 +33,18 @@ class DownloadController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->hasfile('file')){
-            $file=$request->file('file');
-            $filename1=$file->getClientOriginalName(); //getting image extension
-            $filename=time().'_'.$filename1;
-            $file->move('upload/files/downloads/',$filename);
+        if ($request->hasfile('file')) {
+            $file = $request->file('file');
+            $filename1 = $file->getClientOriginalName(); //getting image extension
+            $filename = time() . '_' . $filename1;
+            $file->move('upload/files/downloads/', $filename);
         }
         Download::create([
             'title' => $request->title,
             'download_type_id' => $request->download_type,
             'file' => $filename
         ]);
-
-        return back()->with('success','Created Successfully.');
+        return back()->with('success', 'Created Successfully.');
     }
 
     /**
@@ -58,13 +57,12 @@ class DownloadController extends Controller
     public function update(Request $request)
     {
         $download = Download::findorfail($request->id);
-        if($request->hasfile('file')){
-            $file=$request->file('file');
-            $filename1=$file->getClientOriginalName(); //getting image extension
-            $filename=time().'_'.$filename1;
-            $file->move('upload/files/downloads/',$filename);
-        }
-        else{
+        if ($request->hasfile('file')) {
+            $file = $request->file('file');
+            $filename1 = $file->getClientOriginalName(); //getting image extension
+            $filename = time() . '_' . $filename1;
+            $file->move('upload/files/downloads/', $filename);
+        } else {
             $filename = $download->file;
         }
         $download->update([
@@ -72,7 +70,7 @@ class DownloadController extends Controller
             'download_type_id' => $request->download_type,
             'file' => $filename
         ]);
-        
+
         return back()->with('success', 'Updated successfully');
     }
 
@@ -82,13 +80,13 @@ class DownloadController extends Controller
      * @param  \App\Models\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function changeStatus($id){
-        $download=Download::find($id);
-        if($download->status == 'on'){
-            $download->status='off';
-        }
-        elseif($download->status == 'off'){
-            $download->status='on';
+    public function changeStatus($id)
+    {
+        $download = Download::find($id);
+        if ($download->status == 'on') {
+            $download->status = 'off';
+        } elseif ($download->status == 'off') {
+            $download->status = 'on';
         }
         $download->update();
         return back()->with('success', 'Status has been changed successfully');
@@ -96,7 +94,7 @@ class DownloadController extends Controller
 
     public function destroy(Request $request)
     {
-        $download=Download::find($request->id);
+        $download = Download::find($request->id);
         $download->delete();
         return back()->with('success', 'Removed successfully');
     }

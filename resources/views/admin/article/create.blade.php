@@ -107,12 +107,12 @@
                                     <div class="form-group">
                                         <label for="subtitle">Subtitle</label>
                                         <input type="text" class="form-control" name="subtitle" id="subtitle"
-                                            value="{{ old('subtitle') }}" placeholder="Enter Subtitle" required>
+                                            value="{{ old('subtitle') }}" placeholder="Enter Subtitle">
                                         @error('subtitle')
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                </div>
+                            </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="image">Image</label>

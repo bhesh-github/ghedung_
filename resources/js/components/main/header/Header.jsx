@@ -6,14 +6,15 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { SlArrowRight } from "react-icons/sl";
 import { BiCaretDown } from "react-icons/bi";
 
-export default function SearchAppBar({ navItems }) {
+export default function Header({ navItems }) {
     const [isDropdownContainer, setIsDropdownContainer] = useState("");
     const [selectedNavLinkDetail, setSelectedNavLinkDetail] = useState({
         slugNavLinkId: null,
     });
-    const [companyProfileApi, setCompanyProfileApi] = useState();
-    const [subCompaniesListApi, setSubCompaniesListApi] = useState();
+    const [companyProfileApi, setCompanyProfileApi] = useState({});
+    const [subCompaniesListApi, setSubCompaniesListApi] = useState([]);
 
+    // const [activeNavItemId, setActiveNavItemId] = useState("");
     const handleContainerContentClick = () => {
         setIsDropdownContainer("none");
         setTimeout(() => {
@@ -61,12 +62,10 @@ export default function SearchAppBar({ navItems }) {
                                 {companyProfileApi?.tibetan_lipi}
                             </div>
                             <div className="name">
-                                {/* {companyProfileApi?.company_name} */}
-                                नेपाल तामाङ घेदुङ
+                                {companyProfileApi?.company_name_nepali}
                             </div>
                             <div className="address">
-                                {/* {companyProfileApi?.address} */}
-                                सङ्घीय कार्यसमिति
+                                {companyProfileApi?.address_nepali}
                             </div>
                         </div>
                         <img
@@ -93,7 +92,7 @@ export default function SearchAppBar({ navItems }) {
                                     if (itemType === "samiti") {
                                         return (
                                             <div className="dropdown" key={id}>
-                                                <button className="dropbtn">
+                                                <button className="nav-item">
                                                     {text}
                                                     <BiCaretDown className="drop-caret-icon" />
                                                 </button>
@@ -140,7 +139,7 @@ export default function SearchAppBar({ navItems }) {
                                     } else if (itemType === "sub-company") {
                                         return (
                                             <div className="dropdown" key={id}>
-                                                <button className="dropbtn">
+                                                <button className="nav-item">
                                                     {text}
                                                     <BiCaretDown className="drop-caret-icon" />
                                                 </button>
@@ -187,7 +186,7 @@ export default function SearchAppBar({ navItems }) {
                                     } else {
                                         return (
                                             <div className="dropdown" key={id}>
-                                                <button className="dropbtn">
+                                                <button className="nav-item">
                                                     {text}
                                                     <BiCaretDown className="drop-caret-icon" />
                                                 </button>
@@ -236,8 +235,16 @@ export default function SearchAppBar({ navItems }) {
                                     return (
                                         <NavLink
                                             className="nav-item"
+                                            // className={`nav-item ${
+                                            //     activeNavItemId === id
+                                            //         ? "active-nav-item"
+                                            //         : ""
+                                            // }`}
                                             key={id}
                                             to={navigateLink}
+                                            // onClick={() => {
+                                            //     setActiveNavItemId(id);
+                                            // }}
                                         >
                                             {text}
                                         </NavLink>
@@ -525,13 +532,19 @@ export default function SearchAppBar({ navItems }) {
     );
 }
 
-SearchAppBar.defaultProps = {
+Header.defaultProps = {
     navItems: [
         {
             id: 0,
             text: "गृहपृष्ठ",
             // linkType: "home",
             navigateLink: "/",
+        },
+        {
+            id: 3,
+            text: "परिचय",
+            // linkType: "notice",
+            navigateLink: "about",
         },
         {
             id: 1,
@@ -557,12 +570,7 @@ SearchAppBar.defaultProps = {
             // linkType: "news",
             navigateLink: "documents",
         },
-        {
-            id: 3,
-            text: "परिचय",
-            // linkType: "notice",
-            navigateLink: "about",
-        },
+        
         {
             id: 4,
             text: "ग्यालेरी",

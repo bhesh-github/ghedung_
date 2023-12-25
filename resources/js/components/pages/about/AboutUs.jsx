@@ -38,7 +38,7 @@ const AboutUs = () => {
                         }}
                     />
                     {/* <img src={groupPhoto} alt="" className="group-photo" /> */}
-                    <div className="message">
+                    {/* <div className="message">
                         <div className="message-head">
                             <div className="title">अध्यक्षबाट केही कुरा</div>
                         </div>
@@ -55,8 +55,8 @@ const AboutUs = () => {
                                 className="adakshya-img"
                             />
                         </div>
-                    </div>
-                    <div className="mission-vision-wrapper">
+                    </div> */}
+                    {/* <div className="mission-vision-wrapper">
                         <div className="mission-vision-head">
                             <div className="title">मिसन</div>
                         </div>
@@ -66,8 +66,8 @@ const AboutUs = () => {
                                 __html: companyProfileApi?.mission,
                             }}
                         />
-                    </div>
-                    <div className="mission-vision-wrapper">
+                    </div> */}
+                    {/* <div className="mission-vision-wrapper">
                         <div className="mission-vision-head">
                             <div className="title">भिजन</div>
                         </div>
@@ -77,7 +77,7 @@ const AboutUs = () => {
                                 __html: companyProfileApi?.vision,
                             }}
                         />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

@@ -37,6 +37,14 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="company_name_nepali">Company Name (Nepali)</label>
+                                        <input type="text" class="form-control" name="company_name_nepali" id="company_name_nepali"
+                                            value="{{ $profile->company_name_nepali }}" placeholder="Enter Company Name (Nepali)">
+                                        @error('company_name_nepali')
+                                            <p style="color: red">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label for="name">Tibetan Lipi</label>
                                         <input type="text" class="form-control" name="tibetan_lipi" id="tibetan_lipi"
                                             value="{{ $profile->tibetan_lipi }}" >
@@ -97,7 +105,6 @@
 
                             </div>
                         </div>
-                        <!--/.col (left) -->
                         <!-- right column -->
                         <div class="col-md-5">
                             <!-- Form Element sizes -->
@@ -117,7 +124,7 @@
                                     <div class="form-group">
                                         <label for="phone">Phone</label>
                                         <input type="text" class="form-control" name="phone" id="phone"
-                                            value="{{ $profile->phone }}" placeholder="Enter email">
+                                            value="{{ $profile->phone }}" placeholder="Enter Number">
                                         @error('phone')
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
@@ -125,8 +132,16 @@
                                     <div class="form-group">
                                         <label for="address">Address</label>
                                         <input type="text" class="form-control" name="address" id="address"
-                                            value="{{ $profile->address }}" placeholder="Enter email">
+                                            value="{{ $profile->address }}" placeholder="Enter Address">
                                         @error('address')
+                                            <p style="color: red">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address_nepali">Address (Nepali)</label>
+                                        <input type="text" class="form-control" name="address_nepali" id="address_nepali"
+                                            value="{{ $profile->address_nepali }}" placeholder="Enter Address (Nepali)">
+                                        @error('address_nepali')
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
                                     </div>
@@ -146,14 +161,14 @@
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="twitter">Twitter</label>
                                         <input type="url" class="form-control" name="twitter" id="twitter"
                                             value="{{ $profile->twitter }}" placeholder="Enter Twitter">
                                         @error('twitter')
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
                                         <label for="youtube">Youtube</label>
                                         <input type="url" class="form-control" name="youtube" id="youtube"
@@ -162,21 +177,17 @@
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="instagram">Instagram</label>
                                         <input type="url" class="form-control" name="instagram" id="instagram"
                                             value="{{ $profile->instagram }}" placeholder="Enter Instagram">
                                         @error('instagram')
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
-                                    </div>
+                                    </div> --}}
                                 </div>
-                                <!-- /.card-body -->
-                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card -->
                         </div>
-                        <!--/.col (right) -->
 
                         <div class="col-md-12">
                             <!-- Form Element sizes -->
@@ -194,7 +205,7 @@
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="mission">Our Mission</label>
                                         <textarea id="summernote" name="mission" placeholder="Enter Company's Mission">
                                         {{ $profile->mission }}
@@ -211,36 +222,10 @@
                                         @error('vision')
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
-                                    </div>
-                                    {{-- <div class="form-group">
-                                        <label for="experience">Experience</label>
-                                        <textarea id="summernote" name="experience" placeholder="Enter Experience">
-                                        {{ $profile->experience }}
-                                    </textarea>
-                                        @error('experience')
-                                            <p style="color: red">{{ $message }}</p>
-                                        @enderror
                                     </div> --}}
-                                    {{-- <div class="form-group">
-                                        <label for="education_consultant">Our Education Consultant</label>
-                                        <textarea id="summernote" name="education_consultant" placeholder="Enter Education Consultant">
-                                        {{ $profile->education_consultant }}
-                                    </textarea>
-                                        @error('education_consultant')
-                                            <p style="color: red">{{ $message }}</p>
-                                        @enderror
-                                    </div> --}}
-                                    {{-- <div class="form-group">
-                                        <label for="success_statement">Our Success Statements</label>
-                                        <textarea id="summernote" name="success_statement" placeholder="Enter Success Statements">
-                                        {{ $profile->success_statement }}
-                                    </textarea>
-                                        @error('success_statement')
-                                            <p style="color: red">{{ $message }}</p>
-                                        @enderror
-                                    </div> --}}
-
-                                    <div class="row">
+                            
+                                                                        
+                                    {{-- <div class="row">
                                         <div class="col-md-12">
                                             <div class="x_panel">
                                                 <div class="x_title">
@@ -285,12 +270,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
-                                <!-- /.card-body -->
-                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card -->
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -303,11 +285,14 @@
         </section>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     <script>
         $('textarea#summernote').summernote({
             placeholder: 'Write Introduction Here ......',

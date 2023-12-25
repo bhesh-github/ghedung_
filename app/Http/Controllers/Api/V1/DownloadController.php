@@ -11,8 +11,8 @@ class DownloadController extends Controller
     public function downloads()
     {
         $value = DownloadType::where('status', 'on')->with('downloads', function ($row) {
-            $row->where('status', 'on')->latest()->get();
-        })->latest()->get();
+            $row->where('status', 'on')->oldest()->get();
+        })->oldest()->get();
         return response()->json($value);
     }
 }

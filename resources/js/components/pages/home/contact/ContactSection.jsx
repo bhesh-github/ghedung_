@@ -236,9 +236,11 @@ const ContactSection = ({ formObj }) => {
                                 Want to reach us directly?
                             </h4>
                             <div className="brief">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Id dui pharetra elementum sit
-                                id sagittis non donec egestas.
+                                We value your inquiries and feedback. Feel free
+                                to get in touch with us using the contact
+                                information provided below. Our team is here to
+                                assist you with any questions or concerns you
+                                may have.
                             </div>
                             <div className="address-wrapper">
                                 <div className="address">
@@ -264,6 +266,19 @@ const ContactSection = ({ formObj }) => {
                                     <span className="details">
                                         <div>{companyProfileApi?.address}</div>
                                     </span>
+                                </div>
+                                <div
+                                    className="map"
+                                    style={{
+                                        maxHeight: "450px",
+                                        width: "100%",
+                                    }}
+                                >
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: companyProfileApi?.map,
+                                        }}
+                                    />
                                 </div>
                             </div>
                         </div>

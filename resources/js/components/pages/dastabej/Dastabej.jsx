@@ -42,71 +42,75 @@ const Dastabej = () => {
                                 title = "",
                                 downloads = "",
                             } = item;
-                            return (
-                                <div key={id} className="downloads-section">
-                                    <h1 className="section-head">{title}</h1>
-                                    {downloads &&
-                                        downloads[0] &&
-                                        downloads.map((item) => {
-                                            const {
-                                                id = "",
-                                                title = "",
-                                                file_link = "",
-                                                created_at = "",
-                                            } = item;
+                            if (downloads?.[0]) {
+                                return (
+                                    <div key={id} className="downloads-section">
+                                        <h1 className="section-head">
+                                            {title}
+                                        </h1>
+                                        {downloads &&
+                                            downloads[0] &&
+                                            downloads.map((item) => {
+                                                const {
+                                                    id = "",
+                                                    title = "",
+                                                    file_link = "",
+                                                    created_at = "",
+                                                } = item;
 
-                                            const months = [
-                                                "January",
-                                                "February",
-                                                "March",
-                                                "April",
-                                                "May",
-                                                "June",
-                                                "July",
-                                                "August",
-                                                "September",
-                                                "October",
-                                                "November",
-                                                "December",
-                                            ];
-                                            const d = new Date(created_at);
+                                                const months = [
+                                                    "January",
+                                                    "February",
+                                                    "March",
+                                                    "April",
+                                                    "May",
+                                                    "June",
+                                                    "July",
+                                                    "August",
+                                                    "September",
+                                                    "October",
+                                                    "November",
+                                                    "December",
+                                                ];
+                                                const d = new Date(created_at);
 
-                                            const formatedData = `${d.getDate()} ${
-                                                months[d.getMonth()]
-                                            } ${d.getFullYear()} `;
+                                                const formatedData = `${d.getDate()} ${
+                                                    months[d.getMonth()]
+                                                } ${d.getFullYear()} `;
 
-                                            return (
-                                                <div
-                                                    className="notice-card"
-                                                    key={id}
-                                                >
-                                                    <a
-                                                        href={file_link}
-                                                        target="__blank"
-                                                        className="title-wrapper"
+                                                return (
+                                                    <div
+                                                        className="notice-card"
+                                                        key={id}
                                                     >
-                                                        <div className="date">
-                                                            {formatedData}
-                                                        </div>
-                                                        <div className="title">
-                                                            {title}
-                                                        </div>
-                                                    </a>
-                                                    <a
-                                                        href={file_link}
-                                                        target="__blank"
-                                                        className="view-btn"
-                                                    >
-                                                        <div className="text">
-                                                            View
-                                                        </div>
-                                                        <TfiEye className="eye-icon" />
-                                                    </a>
-                                                </div>
-                                            );
-                                        })}
-                                </div>
-                            );
+                                                        <a
+                                                            href={file_link}
+                                                            target="__blank"
+                                                            className="title-wrapper"
+                                                        >
+                                                            <div className="date">
+                                                                {formatedData}
+                                                            </div>
+                                                            <div className="title">
+                                                                {title}
+                                                            </div>
+                                                        </a>
+                                                        <a
+                                                            href={file_link}
+                                                            target="__blank"
+                                                            className="view-btn"
+                                                        >
+                                                            <div className="text">
+                                                                View
+                                                            </div>
+                                                            <TfiEye className="eye-icon" />
+                                                        </a>
+                                                    </div>
+                                                );
+                                            })}
+                                    </div>
+                                );
+                            }
                         })}
                 </div>
             </div>
@@ -115,4 +119,3 @@ const Dastabej = () => {
 };
 
 export default Dastabej;
-

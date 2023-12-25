@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('company_profiles', function (Blueprint $table) {
             $table->id();
             $table->string('company_name')->nullable();
+            $table->string('company_name_nepali')->nullable();
             $table->string('tibetan_lipi')->nullable();
             $table->string('company_flag')->nullable();
             $table->string('company_logo')->nullable();
@@ -20,12 +21,9 @@ return new class extends Migration {
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
+            $table->string('address_nepali')->nullable();
             $table->longText('introduction')->nullable();
-            $table->longText('mission')->nullable();
-            $table->longText('vision')->nullable();
-            $table->string('chairperson_image')->nullable();
-            $table->longText('chairperson_message')->nullable();
-            $table->string('map')->nullable();
+            $table->longText('map')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();

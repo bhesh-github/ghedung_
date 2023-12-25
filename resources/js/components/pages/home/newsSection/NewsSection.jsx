@@ -27,27 +27,29 @@ const NewsSection = () => {
 
     return (
         <div className="news-section">
-            <div className="news-contents">
-                <div className="heading-wrapper">
-                    <div className="title">न्यूजहरु</div>
-                    {newsApi?.length > sliceNum && (
-                        <div
-                            className="see-more"
-                            onClick={() => {
-                                navigate("/news");
-                            }}
-                        >
-                            थप हेर्नुहोस्
-                        </div>
-                    )}
+            {newsApi?.length > 0 && (
+                <div className="news-contents">
+                    <div className="heading-wrapper">
+                        <div className="title">न्यूजहरु</div>
+                        {newsApi?.length > sliceNum && (
+                            <div
+                                className="see-more"
+                                onClick={() => {
+                                    navigate("/news");
+                                }}
+                            >
+                                थप हेर्नुहोस्
+                            </div>
+                        )}
+                    </div>
+                    <div className="news-cards">
+                        {newsApi?.[0] &&
+                            newsApi.slice(0, sliceNum).map((news) => {
+                                return <NewsCard key={news?.id} news={news} />;
+                            })}
+                    </div>
                 </div>
-                <div className="news-cards">
-                    {newsApi?.[0] &&
-                        newsApi.slice(0, sliceNum).map((news) => {
-                            return <NewsCard key={news?.id} news={news} />;
-                        })}
-                </div>
-            </div>
+            )}
         </div>
     );
 };

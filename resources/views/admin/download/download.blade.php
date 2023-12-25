@@ -117,7 +117,7 @@
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Edit gallery
+                                                                <h5 class="modal-title" id="exampleModalLabel">Edit Download
                                                                 </h5>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
@@ -155,7 +155,7 @@
                                                                             <p style="color: red">{{ $message }}</p>
                                                                         @enderror
                                                                         <div class="preview mt-2">
-                                                                            <img src="{{ asset('upload/files/downloads/' . $value->image) }}"
+                                                                            <img src="{{ asset('upload/files/downloads/' . $value->file) }}"
                                                                                 id="file-ip-1-edit{{ $value->id }}" width="200px">
                                                                         </div>
                                                                     </div>
@@ -184,9 +184,13 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+
                             </table>
                             <!-- /.card -->
 
+                        </div>
+                        <div class="row">
+                            {{$downloads->links('pagination::simple-bootstrap-4')}}
                         </div>
                     </div>
                     <!--/.col (left) -->

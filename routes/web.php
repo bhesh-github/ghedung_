@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SamitiMemberCardController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,6 +14,7 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\SamitiController;
 use App\Http\Controllers\SallahakarController;
 use App\Http\Controllers\ContactController as AdminContactController;
 use App\Http\Controllers\CompanyProfileController;
@@ -165,6 +167,27 @@ Route::prefix('admin')->group(function () {
         Route::get('/team/status/change/{id}', 'changeStatus')->name('team.status');
     });
 
+    // samiti
+    Route::get('samiti', [SamitiController::class, 'index'])->name('samiti.index');
+    Route::post('samiti/add', [SamitiController::class, 'store'])->name('samiti.store');
+    Route::post('samiti/update', [SamitiController::class, 'update'])->name('samiti.update');
+    Route::post('samiti/delete', [SamitiController::class, 'destroy'])->name('samiti.delete');
+    Route::get('samiti/status/change/{id}', [SamitiController::class, 'changeStatus'])->name('samiti.status');
+
+    // samiti member card
+    Route::prefix('/samiti')->group(function () {
+        Route::controller(SamitiMemberCardController::class)->group(function () {
+            Route::get('/member-card/${samiti_slug}', 'index')->name('samiti-member-card.index');
+            Route::get('/member-card/create/${samiti_slug}', 'create')->name('samiti-member-card.create');
+            Route::post('/member-card/add', 'store')->name('samiti-member-card.store');
+            Route::get('/member-card/edit/{id}/${samiti_slug}', 'edit')->name('samiti-member-card.edit');
+            Route::post('/member-card/update', 'update')->name('samiti-member-card.update');
+            Route::post('/member-card/delete/${id}', 'destroy')->name('samiti-member-card.delete');
+            Route::get('/member-card/status/change/{id}', 'changeStatus')->name('samiti-member-card.status');
+            // 
+        });
+    });
+
     // sallahakar
     Route::controller(SallahakarController::class)->group(function () {
         Route::get('/sallahakar', 'index')->name('sallahakar.index');
@@ -249,7 +272,6 @@ Route::prefix('admin')->group(function () {
         Route::controller(SubCompanyActivityController::class)->group(function () {
             // Route::get('/activity', 'index')->name('activity.index');
             Route::get('/activity/create/${sec_slug}/${comp_slug}', 'create')->name('sub-company.activity.create');
-
             // 
             Route::post('/activity/add', 'store')->name('sub-company.activity.store');
             Route::get('/activity/edit/{id}/${comp_slug}/${sec_slug}', 'edit')->name('sub-company.activity.edit');
@@ -280,5 +302,5 @@ Route::get('{path1}/{path2?}/{path3?}/{path4?}/{path5?}/{path6?}', function () {
 });
 
 
-// Route::redirect('/register', '/login');
+Route::redirect('/register', '/login');
 

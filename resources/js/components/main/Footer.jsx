@@ -31,11 +31,11 @@ const Footer = () => {
                             <RiFacebookFill className="icon" />
                         </a>
                     </div>
-                    <div className="icons-wrapper">
+                    {/* <div className="icons-wrapper">
                         <a href={companyProfileApi?.twitter} target="__blank">
                             <BsTwitter className="icon" />
                         </a>
-                    </div>
+                    </div> */}
                     <div className="icons-wrapper">
                         <a href={companyProfileApi?.youtube} target="__blank">
                             <BsYoutube className="icon" />
@@ -44,7 +44,7 @@ const Footer = () => {
                 </div>
                 <div className="text-wrapper">
                     <div className="title">
-                        {companyProfileApi?.company_name} Central Office
+                        {companyProfileApi?.company_name} Federal Office
                     </div>
                     <div className="hr-line"></div>
                     <div className="texts">

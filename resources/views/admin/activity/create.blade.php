@@ -107,7 +107,7 @@
                                     <div class="form-group">
                                         <label for="subtitle">Subtitle</label>
                                         <input type="text" class="form-control" name="subtitle" id="subtitle"
-                                            value="{{ old('subtitle') }}" placeholder="Enter Subtitle" required>
+                                            value="{{ old('subtitle') }}" placeholder="Enter Subtitle">
                                         @error('subtitle')
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror
@@ -184,14 +184,15 @@
                 ['style', ['style']],
                 ['font', ['bold', 'italic', 'underline', 'clear']],
                 // ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
-                //['fontname', ['fontname']],
-                // ['fontsize', ['fontsize']],
+                // ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
                 ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['height', ['height']],
                 ['table', ['table']],
                 ['insert', ['link', 'picture', 'hr']],
-                //['view', ['fullscreen', 'codeview']],
+                ['view', ['fullscreen']],
+                // ['view', ['fullscreen', 'codeview']],
                 ['help', ['help']]
             ],
         });

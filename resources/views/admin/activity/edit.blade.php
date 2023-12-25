@@ -103,7 +103,7 @@
                                     <div class="form-group">
                                         <label for="subtitle">Subtitle</label>
                                         <input type="text" class="form-control" name="subtitle" id="subtitle"
-                                            value="{{ $activity->subtitle }}" placeholder="Enter Subtitle" required>
+                                            value="{{ $activity->subtitle }}" placeholder="Enter Subtitle">
                                         @error('subtitle')
                                             <p style="color: red">{{ $message }}</p>
                                         @enderror

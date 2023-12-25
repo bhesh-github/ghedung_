@@ -73,37 +73,37 @@ class CompanyProfileController extends Controller
     {
         $validated = $request->validate([
             'company_name' => 'required',
+            'company_name_nepali' => 'required',
             // 'tibetan_lipi' => 'required',
-
             'email' => 'required|email',
             'phone' => 'required',
             'address' => 'required',
+            'address_nepali' => 'required',
             'introduction' => 'required',
             'map' => 'nullable',
             'facebook' => 'nullable',
-            'twitter' => 'nullable',
+            // 'twitter' => 'nullable',
             'youtube' => 'nullable',
-            'instagram' => 'nullable',
+            // 'instagram' => 'nullable',
             'company_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'favicon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $profile=CompanyProfile::first();
         $profile->company_name=$request->company_name;
+        $profile->company_name_nepali=$request->company_name_nepali;
         $profile->tibetan_lipi=$request->tibetan_lipi;
         $profile->email=$request->email;
         $profile->phone=$request->phone;
         $profile->address=$request->address;
+        $profile->address_nepali=$request->address_nepali;
         $profile->introduction=$request->introduction;
-        $profile->mission=$request->mission;
-        $profile->vision=$request->vision;
-        // $profile->experience=$request->experience;
-        // $profile->education_consultant=$request->education_consultant;
-        // $profile->success_statement=$request->success_statement;
-        $profile->chairperson_message=$request->chairperson_message;
+        // $profile->mission=$request->mission;
+        // $profile->vision=$request->vision;
+        // $profile->chairperson_message=$request->chairperson_message;
         $profile->map=$request->map;
         $profile->facebook=$request->facebook;
-        $profile->twitter=$request->twitter;
-        $profile->instagram=$request->instagram;
+        // $profile->twitter=$request->twitter;
+        // $profile->instagram=$request->instagram;
         $profile->youtube=$request->youtube;
 
         if($request->hasfile('company_logo')){
@@ -127,13 +127,13 @@ class CompanyProfileController extends Controller
             $file->move('upload/images/company_profile/',$filename);
             $profile->company_flag=$filename;
         }
-        if($request->hasfile('chairperson')){
-            $file=$request->file('chairperson');
-            $filename=$file->getClientOriginalName(); //getting image extension
-            // $filename=time().'.'.$extension;
-            $file->move('upload/images/company_profile/',$filename);
-            $profile->chairperson_image=$filename;
-        }
+        // if($request->hasfile('chairperson')){
+        //     $file=$request->file('chairperson');
+        //     $filename=$file->getClientOriginalName(); //getting image extension
+        //     // $filename=time().'.'.$extension;
+        //     $file->move('upload/images/company_profile/',$filename);
+        //     $profile->chairperson_image=$filename;
+        // }
 
         $profile->update();
         return back()->with('success', 'Company Profile has been updated successfully');

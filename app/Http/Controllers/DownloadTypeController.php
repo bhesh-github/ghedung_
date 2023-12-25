@@ -9,14 +9,8 @@ class DownloadTypeController extends Controller
 {
     public function index()
     {
-        $types = DownloadType::latest()->get();
-
+        $types = DownloadType::oldest()->paginate(20);
         return view('admin.download.type',compact("types"));
-    }
-
-    public function create()
-    {
-        //
     }
 
     /**

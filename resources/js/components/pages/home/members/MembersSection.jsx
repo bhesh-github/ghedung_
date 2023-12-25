@@ -31,24 +31,26 @@ const MembersSection = () => {
 
     return (
         <div className="team-members-page">
-            <div className="in-wrapper">
-                <div className="heading-wrapper">
-                    <div className="title">हाम्रो टिम</div>
-                    {teamsApi?.length > sliceNum && (
-                        <div
-                            className="see-more"
-                            onClick={() => {
-                                navigate("/samiti/karyasamiti");
-                            }}
-                        >
-                            थप हेर्नुहोस्
-                        </div>
-                    )}
+            {teamsApi?.length > 0 && (
+                <div className="in-wrapper">
+                    <div className="heading-wrapper">
+                        <div className="title">हाम्रो टिम</div>
+                        {teamsApi?.length > sliceNum && (
+                            <div
+                                className="see-more"
+                                onClick={() => {
+                                    navigate("/samiti/karyasamiti");
+                                }}
+                            >
+                                थप हेर्नुहोस्
+                            </div>
+                        )}
+                    </div>
+                    <div className="cards-wrapper" data-aos="fade-right">
+                        {mCard && mCard}
+                    </div>
                 </div>
-                <div className="cards-wrapper" data-aos="fade-right">
-                    {mCard && mCard}
-                </div>
-            </div>
+            )}
         </div>
     );
 };

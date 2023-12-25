@@ -23,82 +23,86 @@ const NoticeSection = () => {
 
     return (
         <div className="notice-section">
-            <div className="contents">
-                <div className="heading-wrapper">
-                    <div className="title">सुचनाहरु</div>
-                    {noticeApi && noticeApi?.length > 4 && (
-                        <div
-                            className="see-more"
-                            onClick={() => {
-                                navigate("/notice");
-                            }}
-                        >
-                            थप हेर्नुहोस्
-                        </div>
-                    )}
-                </div>
-                <div className="notice-wrapper">
-                    {noticeApi &&
-                        noticeApi.slice(0, 4).map((item) => {
-                            const {
-                                id = "",
-                                title = "",
-                                slug = "",
-                                image_link = "",
-                                created_at = "",
-                            } = item;
+            {noticeApi?.length > 0 && (
+                <div className="contents">
+                    <div className="heading-wrapper">
+                        <div className="title">सुचनाहरु</div>
+                        {noticeApi && noticeApi?.length > 4 && (
+                            <div
+                                className="see-more"
+                                onClick={() => {
+                                    navigate("/notice");
+                                }}
+                            >
+                                थप हेर्नुहोस्
+                            </div>
+                        )}
+                    </div>
+                    <div className="notice-wrapper">
+                        {noticeApi &&
+                            noticeApi.slice(0, 4).map((item) => {
+                                const {
+                                    id = "",
+                                    title = "",
+                                    slug = "",
+                                    image_link = "",
+                                    created_at = "",
+                                } = item;
 
-                            const months = [
-                                "January",
-                                "February",
-                                "March",
-                                "April",
-                                "May",
-                                "June",
-                                "July",
-                                "August",
-                                "September",
-                                "October",
-                                "November",
-                                "December",
-                            ];
-                            const d = new Date(created_at);
+                                const months = [
+                                    "January",
+                                    "February",
+                                    "March",
+                                    "April",
+                                    "May",
+                                    "June",
+                                    "July",
+                                    "August",
+                                    "September",
+                                    "October",
+                                    "November",
+                                    "December",
+                                ];
+                                const d = new Date(created_at);
 
-                            const formatedData = `${d.getDate()} ${
-                                months[d.getMonth()]
-                            } ${d.getFullYear()} `;
+                                const formatedData = `${d.getDate()} ${
+                                    months[d.getMonth()]
+                                } ${d.getFullYear()} `;
 
-                            return (
-                                <div className="notice-card" key={id}>
-                                    <img
-                                        src={image_link}
-                                        alt=""
-                                        className="card-img"
-                                        onClick={() => {
-                                            navigate(`/notice-detail/${slug}`);
-                                        }}
-                                    />
-                                    <div className="text-area">
-                                        <div className="created-date">
-                                            {formatedData && formatedData}
-                                        </div>
-                                        <div
-                                            className="title"
+                                return (
+                                    <div className="notice-card" key={id}>
+                                        <img
+                                            src={image_link}
+                                            alt=""
+                                            className="card-img"
                                             onClick={() => {
                                                 navigate(
                                                     `/notice-detail/${slug}`
                                                 );
                                             }}
-                                        >
-                                            {title}
+                                        />
+                                        <div className="text-area">
+                                            <div className="created-date">
+                                                {formatedData && formatedData}
+                                            </div>
+                                            <div
+                                                className="title"
+                                                onClick={() => {
+                                                    navigate(
+                                                        `/notice-detail/${slug}`
+                                                    );
+                                                }}
+                                            >
+                                                {title}
+                                            </div>
+                                            {/* <EyeIcon className="eye-icon" /> */}
                                         </div>
-                                        {/* <EyeIcon className="eye-icon" /> */}
                                     </div>
-                                </div>
-                            );
-                        })}
+                                );
+                            })}
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 };

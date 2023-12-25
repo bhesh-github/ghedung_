@@ -38,7 +38,7 @@ const Gallery = () => {
                     </div>
                     <div className="gallery-containers">
                         {galleryApi &&
-                            galleryApi.map((item, idx) => {
+                            galleryApi.map((item) => {
                                 const {
                                     id = "",
                                     name = "",
@@ -73,4 +73,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
