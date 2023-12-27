@@ -4,7 +4,7 @@ import NewsSection from "./newsSection/NewsSection";
 import VideosSection from "./videos/VideosSection";
 import NoticeSection from "./noticeSection/NoticeSection";
 
-import MembersSection from "./members/MembersSection";
+// import MembersSection from "./members/MembersSection";
 import ContactSection from "./contact/ContactSection";
 import ArticlesSection from "./articles/ArticlesSection";
 
@@ -19,7 +19,7 @@ const Home = () => {
                 <VideosSection />
                 <NoticeSection />
                 <ArticlesSection />
-                <MembersSection />
+                {/* <MembersSection /> */}
                 <ContactSection />
             </div>
         </div>

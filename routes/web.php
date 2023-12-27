@@ -1,25 +1,32 @@
 <?php
 
-use App\Http\Controllers\SamitiMemberCardController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 // Company
+use App\Http\Controllers\CompanyProfileController;
+// home
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\NoticeController;
-use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\GalleryImageController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\SamitiMemberCardController;
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ContactController as AdminContactController;
+//  
 use App\Http\Controllers\SamitiController;
 use App\Http\Controllers\SallahakarController;
-use App\Http\Controllers\ContactController as AdminContactController;
-use App\Http\Controllers\CompanyProfileController;
+use App\Http\Controllers\SamitiActivityPdfController;
+// 
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\DownloadTypeController;
+// 
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\GalleryImageController;
+
+
 
 // Sub Company 
 use App\Http\Controllers\SubCompanyController;
@@ -184,7 +191,19 @@ Route::prefix('admin')->group(function () {
             Route::post('/member-card/update', 'update')->name('samiti-member-card.update');
             Route::post('/member-card/delete/${id}', 'destroy')->name('samiti-member-card.delete');
             Route::get('/member-card/status/change/{id}', 'changeStatus')->name('samiti-member-card.status');
-            // 
+        });
+    });
+
+       // samiti activity
+       Route::prefix('/samiti')->group(function () {
+        Route::controller(SamitiActivityPdfController::class)->group(function () {
+            Route::get('/activity/${samiti_slug}', 'index')->name('samiti.activity.index');
+            Route::get('/activity/create/${samiti_slug}', 'create')->name('samiti.activity.create');
+            Route::post('/activity/add', 'store')->name('samiti.activity.store');
+            Route::get('/activity/edit/{id}/${samiti_slug}', 'edit')->name('samiti.activity.edit');
+            Route::post('/activity/update', 'update')->name('samiti.activity.update');
+            Route::get('/activity/status/change/{id}', 'changeStatus')->name('samiti.activity.status');
+            Route::post('/activity/delete', 'destroy')->name('samiti.activity.delete');
         });
     });
 

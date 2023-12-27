@@ -1,0 +1,262 @@
+.karyasamiti-sec {
+    overflow-x: auto;
+    overflow-y: hidden;
+    .heading-wrapper {
+        border-bottom: 1px solid #000;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        .title {
+            font-weight: 600;
+            font-size: 40px;
+            color: $primaryDarkBlue;
+        }
+    }
+    @media screen and (max-width: 550px) {
+        .heading-wrapper {
+            .title {
+                font-size: 25px;
+            }
+            .see-more {
+                font-size: 12px;
+            }
+        }
+    }
+    .first-card-wrapper {
+        margin-top: 3em;
+        display: flex;
+        justify-content: center;
+        .member-card {
+            .member-img {
+                height: 270px;
+                // width: 200px;
+            }
+        }
+    }
+    @media screen and (max-width: 1200px) {
+        .first-card-wrapper {
+            .member-card {
+                .member-img {
+                    height: 220px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 850px) {
+        .first-card-wrapper {
+            .member-card {
+                .member-img {
+                    height: 200px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 650px) {
+        .first-card-wrapper {
+            .member-card {
+                .member-img {
+                    height: 150px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 520px) {
+        .first-card-wrapper {
+            .member-card {
+                .member-img {
+                    height: 200px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 430px) {
+        .first-card-wrapper {
+            .member-card {
+                .member-img {
+                    height: 180px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 370px) {
+        .first-card-wrapper {
+            .member-card {
+                .member-img {
+                    height: 150px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 330px) {
+        .first-card-wrapper {
+            .member-card {
+                .member-img {
+                    height: 130px;
+                }
+            }
+        }
+    }
+    .cards-wrapper {
+        width: 100%;
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2em;
+        .member-card {
+            .member-img {
+                height: 270px;
+            }
+        }
+    }
+    @media screen and (max-width: 1285px) {
+        .cards-wrapper {
+            gap: 3em 2em;
+        }
+    }
+    @media screen and (max-width: 1200px) {
+        .cards-wrapper {
+            .member-card {
+                .member-img {
+                    height: 250px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 1150px) {
+        .cards-wrapper {
+            .member-card {
+                .member-img {
+                    height: 220px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 950px) {
+        .cards-wrapper {
+            .member-card {
+                .member-img {
+                    height: 200px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 850px) {
+        .cards-wrapper {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1em 1em;
+            .member-card {
+                .member-img {
+                    height: 180px;
+                }
+                @media screen and (max-width: 700px) {
+                    .member-img {
+                        height: 150px;
+                    }
+                }
+                @media screen and (max-width: 600px) {
+                    .member-img {
+                        height: 120px;
+                    }
+                }
+                @media screen and (max-width: 400px) {
+                    .member-img {
+                        height: 100px;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 750px) {
+        .cards-wrapper {
+            grid-template-columns: repeat(3, 1fr);
+            .member-card {
+                .member-img {
+                    height: 190px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 650px) {
+        .cards-wrapper {
+            .member-card {
+                .member-img {
+                    height: 150px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 550px) {
+        .cards-wrapper {
+            margin-top: 15px;
+        }
+    }
+    @media screen and (max-width: 520px) {
+        .cards-wrapper {
+            grid-template-columns: repeat(2, 1fr);
+            .member-card {
+                .member-img {
+                    height: 200px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 430px) {
+        .cards-wrapper {
+            .member-card {
+                .member-img {
+                    height: 180px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 380px) {
+        .cards-wrapper {
+            .member-card {
+                .member-img {
+                    height: 150px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 350px) {
+        .cards-wrapper {
+            .member-card {
+                .member-img {
+                    height: 140px;
+                }
+            }
+        }
+    }
+    .pdf-wrapper {
+        margin-top: 3em;
+        display: flex;
+        justify-content: center;
+    }
+    .names-table {
+        margin-top: 3em;
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    }
+    @media screen and (max-width: 550px) {
+        .names-table {
+            margin-top: 15px;
+        }
+    }
+}
+@media screen and (max-width: 800px) {
+    .karyasamiti-sec {
+        .names-table {
+            width: 800px;
+        }
+    }
+}

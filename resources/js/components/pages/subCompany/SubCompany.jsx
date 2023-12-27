@@ -3,8 +3,10 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import MemberCard from "../../forAll/MembersCard";
-
+import { FaFilePdf } from "react-icons/fa6";
 import { lazy } from "react";
+import pdfIcon from "../../../images/forAll/pdf-icon.png";
+
 const InnerBanner = lazy(() => import("../../forAll/InnerBanner"));
 const SubCompanyActivityCard = lazy(() =>
     import("./subCompanyActivities/SubCompanyActivityCard")
@@ -91,6 +93,11 @@ const SubCompany = () => {
                                                     key={item.id}
                                                 />
                                             ))}
+                                    {/* <img
+                                        className="pdf-icon"
+                                        src={pdfIcon}
+                                        alt=""
+                                    /> */}
                                 </div>
                             </div>
                         )}

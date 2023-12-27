@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\V1\ActivityController;
 use App\Http\Controllers\Api\V1\SubCompanyController;
 use App\Http\Controllers\Api\V1\SubCompanyTeamController;
 use App\Http\Controllers\Api\V1\SubCompanyActivityController;
+use App\Http\Controllers\Api\V1\SamitiController;
 
 
 
@@ -44,6 +45,7 @@ Route::get('/company-profile', [CompanyProfileController::class, 'profile']);
 
 // Navbar
 Route::get('/nav/sub-companies', [NavController::class, 'subCompanies']);
+Route::get('/nav/samiti', [NavController::class, 'samiti']);
 
 // Home
 Route::get('/sliders', [HomeController::class, 'slider']);
@@ -52,6 +54,9 @@ Route::get('/home/videos', [HomeController::class, 'videos']);
 Route::get('/home/notices', [HomeController::class, 'notices']);
 Route::get('/home/articles', [HomeController::class, 'articles']);
 Route::get('/home/teams', [HomeController::class, 'teams']);
+
+// samiti
+Route::get('/samiti/details/{slug}', [SamitiController::class, 'details']);
 
 // Contact
 Route::post('/contact/store', [ContactController::class, 'contact']);
@@ -63,7 +68,6 @@ Route::get('/news/details/{slug}', [NewsController::class, 'details']);
 // Noitces
 Route::get('/notices/list', [NoticeController::class, 'notices']);
 Route::get('/notice/details/{slug}', [NoticeController::class, 'details']);
-
 
 // Teams
 Route::get('/teams', [TeamController::class, 'teams']);

@@ -13,7 +13,7 @@ export default function Header({ navItems }) {
     });
     const [companyProfileApi, setCompanyProfileApi] = useState({});
     const [subCompaniesListApi, setSubCompaniesListApi] = useState([]);
-
+    const [samitiListApi, setSamitiListApi] = useState([]);
     // const [activeNavItemId, setActiveNavItemId] = useState("");
     const handleContainerContentClick = () => {
         setIsDropdownContainer("none");
@@ -31,6 +31,13 @@ export default function Header({ navItems }) {
         const data = await res.data;
         setCompanyProfileApi(data);
     };
+    const fetchSamitiListApi = async () => {
+        const res = await axios.get(
+            import.meta.env.VITE_API_BASE_URL + "/api/nav/samiti"
+        );
+        const data = await res.data;
+        setSamitiListApi(data);
+    };
     const fetchSubCompaniesListApi = async () => {
         const res = await axios.get(
             import.meta.env.VITE_API_BASE_URL + "/api/nav/sub-companies"
@@ -41,6 +48,7 @@ export default function Header({ navItems }) {
 
     useEffect(() => {
         fetchCompanyProfile();
+        fetchSamitiListApi();
         fetchSubCompaniesListApi();
     }, []);
 
@@ -104,8 +112,8 @@ export default function Header({ navItems }) {
                                                     }}
                                                 >
                                                     <div className="dropdown-content">
-                                                        {sublinks &&
-                                                            sublinks.map(
+                                                        {samitiListApi?.[0] &&
+                                                            samitiListApi.map(
                                                                 (item) => {
                                                                     const {
                                                                         id = "",
@@ -285,7 +293,6 @@ export default function Header({ navItems }) {
                             className="offcanvas-title company-name"
                             id="offcanvasRightLabel"
                         >
-                            {/* {companyProfileApi?.company_name} */}
                             नेपाल तामाङ घेदुङ
                         </h5>
                     </div>
@@ -326,19 +333,19 @@ export default function Header({ navItems }) {
                                         <div
                                             key={id}
                                             className="dropdown-wrapper"
-                                            onClick={() => {
-                                                setSelectedNavLinkDetail(
-                                                    (prev) => ({
-                                                        ...prev,
-                                                        slugNavLinkId:
-                                                            selectedNavLinkDetail &&
-                                                            selectedNavLinkDetail.slugNavLinkId ===
-                                                                id
-                                                                ? null
-                                                                : id,
-                                                    })
-                                                );
-                                            }}
+                                            // onClick={() => {
+                                            //     setSelectedNavLinkDetail(
+                                            //         (prev) => ({
+                                            //             ...prev,
+                                            //             slugNavLinkId:
+                                            //                 selectedNavLinkDetail &&
+                                            //                 selectedNavLinkDetail.slugNavLinkId ===
+                                            //                     id
+                                            //                     ? null
+                                            //                     : id,
+                                            //         })
+                                            //     );
+                                            // }}
                                         >
                                             <div
                                                 className="drop-nav-item nav-item"
@@ -363,27 +370,30 @@ export default function Header({ navItems }) {
                                                 className="collapse sublink-wrapper"
                                                 id="samiti"
                                             >
-                                                {sublinks.map((item) => {
-                                                    const {
-                                                        id = "",
-                                                        title = "",
-                                                        slug = "",
-                                                    } = item;
-                                                    return (
-                                                        <div
-                                                            data-bs-dismiss="offcanvas"
-                                                            className="sublink-item"
-                                                            key={id}
-                                                            onClick={() => {
-                                                                navigate(
-                                                                    `${navigateLink}/${slug}`
-                                                                );
-                                                            }}
-                                                        >
-                                                            {title}
-                                                        </div>
-                                                    );
-                                                })}
+                                                {samitiListApi?.[0] &&
+                                                    samitiListApi.map(
+                                                        (item) => {
+                                                            const {
+                                                                id = "",
+                                                                title = "",
+                                                                slug = "",
+                                                            } = item;
+                                                            return (
+                                                                <div
+                                                                    data-bs-dismiss="offcanvas"
+                                                                    className="sublink-item"
+                                                                    key={id}
+                                                                    onClick={() => {
+                                                                        navigate(
+                                                                            `${navigateLink}/${slug}`
+                                                                        );
+                                                                    }}
+                                                                >
+                                                                    {title}
+                                                                </div>
+                                                            );
+                                                        }
+                                                    )}
                                             </div>
                                         </div>
                                     );
@@ -570,7 +580,7 @@ Header.defaultProps = {
             // linkType: "news",
             navigateLink: "documents",
         },
-        
+
         {
             id: 4,
             text: "ग्यालेरी",

@@ -3,6 +3,8 @@ import axios from "axios";
 
 import { TfiEye } from "react-icons/tfi";
 
+import pdfImg from "../../../images/forAll/pdf-icon.png";
+
 import { lazy } from "react";
 const InnerBanner = lazy(() => import("../../forAll/InnerBanner"));
 
@@ -48,66 +50,49 @@ const Dastabej = () => {
                                         <h1 className="section-head">
                                             {title}
                                         </h1>
-                                        {downloads &&
-                                            downloads[0] &&
-                                            downloads.map((item) => {
-                                                const {
-                                                    id = "",
-                                                    title = "",
-                                                    file_link = "",
-                                                    created_at = "",
-                                                } = item;
+                                        <div className="dastabej-cards">
+                                            {downloads &&
+                                                downloads[0] &&
+                                                downloads.map((item) => {
+                                                    const {
+                                                        id = "",
+                                                        title = "",
+                                                        file_link = "",
+                                                    } = item;
 
-                                                const months = [
-                                                    "January",
-                                                    "February",
-                                                    "March",
-                                                    "April",
-                                                    "May",
-                                                    "June",
-                                                    "July",
-                                                    "August",
-                                                    "September",
-                                                    "October",
-                                                    "November",
-                                                    "December",
-                                                ];
-                                                const d = new Date(created_at);
-
-                                                const formatedData = `${d.getDate()} ${
-                                                    months[d.getMonth()]
-                                                } ${d.getFullYear()} `;
-
-                                                return (
-                                                    <div
-                                                        className="notice-card"
-                                                        key={id}
-                                                    >
-                                                        <a
-                                                            href={file_link}
-                                                            target="__blank"
-                                                            className="title-wrapper"
+                                                    return (
+                                                        <div
+                                                            className="dastabej-card"
+                                                            key={id}
                                                         >
-                                                            <div className="date">
-                                                                {formatedData}
-                                                            </div>
-                                                            <div className="title">
-                                                                {title}
-                                                            </div>
-                                                        </a>
-                                                        <a
-                                                            href={file_link}
-                                                            target="__blank"
-                                                            className="view-btn"
-                                                        >
-                                                            <div className="text">
-                                                                View
-                                                            </div>
-                                                            <TfiEye className="eye-icon" />
-                                                        </a>
-                                                    </div>
-                                                );
-                                            })}
+                                                            <a
+                                                                href={file_link}
+                                                                target="__blank"
+                                                                className="icon-title-wrapper"
+                                                            >
+                                                                <img
+                                                                    src={pdfImg}
+                                                                    alt=""
+                                                                    className="pdf-img"
+                                                                />
+                                                                <div className="card-title">
+                                                                    {title}
+                                                                </div>
+                                                            </a>
+                                                            <a
+                                                                href={file_link}
+                                                                target="__blank"
+                                                                className="view-btn"
+                                                            >
+                                                                <div className="text">
+                                                                    View
+                                                                </div>
+                                                                <TfiEye className="eye-icon" />
+                                                            </a>
+                                                        </div>
+                                                    );
+                                                })}
+                                        </div>
                                     </div>
                                 );
                             }

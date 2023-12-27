@@ -3,6 +3,7 @@
 $primaryDarkBlue: #002060;
 $primaryBlue: #2a3890;
 $primaryYellow: #ffe001;
+$primaryGreen: #00A24C;
 $primaryRed: #ef1923;
 $primaryGrey: #3a3a3a;
 $primaryTitle: #54595f;
@@ -24,6 +25,7 @@ $primaryGreyBG: #efefef;
 @import "./scssPartials/forAll/subCompanyRelatedBar";
 @import "./scssPartials/forAll/scrollToTopBtn";
 @import "./scssPartials/forAll/fallbackIndicator/fallbackIndicator";
+@import "./scssPartials/forAll/pdfViewer";
 
 @import "./scssPartials/pages/home/home.scss";
 @import "./scssPartials/main/footer";

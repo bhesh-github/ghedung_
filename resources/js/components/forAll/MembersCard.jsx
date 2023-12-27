@@ -1,15 +1,11 @@
 import React from "react";
-import { GrFacebookOption } from "react-icons/gr";
-import { BsTwitterX } from "react-icons/bs";
-import { LuInstagram } from "react-icons/lu";
+import profileIcon from "../../images/forAll/profile-icon.jpg";
 
 const MembersCard = ({ cardInfo = "" }) => {
     const {
         name = "",
         designation = "",
-        facebook = "",
-        instagram = "",
-        twitter = "",
+        email = "",
         image_link = "",
     } = cardInfo;
     return (
@@ -20,7 +16,7 @@ const MembersCard = ({ cardInfo = "" }) => {
                 className="member-img"
                 style={{ width: "100%" }}
             />
-            <span className="icons">
+            {/* <span className="icons">
                 <a href={facebook} target="__blank">
                     <GrFacebookOption className="icon fb" />
                 </a>
@@ -30,10 +26,11 @@ const MembersCard = ({ cardInfo = "" }) => {
                 <a href={twitter} target="__blank">
                     <BsTwitterX className="icon linkedin" />
                 </a>
-            </span>
+            </span> */}
             <span className="text-wrapper">
                 <div className="name">{name}</div>
-                <div className="staff-position">{designation}</div>
+                <div className="designation">{designation}</div>
+                <div >{email}</div>
             </span>
         </div>
     );

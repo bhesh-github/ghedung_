@@ -1,0 +1,17 @@
+.pdf-viewer {
+    width: 100%;
+    height: 1000px;
+    .i-frame {
+        padding-bottom: 4em;
+        background-color: #2a2a2e;
+    }
+}
+@media screen and (max-width: 500px) {
+    .pdf-viewer {
+        height: 650px;
+        .i-frame {
+            padding-bottom: 2.5em;
+            background-color: #2a2a2e;
+        }
+    }
+}

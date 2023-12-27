@@ -12,7 +12,7 @@ class Samiti extends Model
 
     protected $appends = ['pdf_file_link'];
 
-    public function getFileLinkAttribute()
+    public function getPdfFileLinkAttribute()
     {
        return asset("upload/files/samitis/".$this->samiti_pdf);
     }
@@ -22,3 +22,4 @@ class Samiti extends Model
         return $this->hasMany(SamitiMemberCard::class, 'samiti_id', 'id');
     }
 }
+

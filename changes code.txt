@@ -1,0 +1,33 @@
+  {{-- <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                   Member (कार्यसमिति)
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  {{-- <li class="nav-item">
+                    <a href="{{ route('team.create') }}"class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>
+                        Add Member
+                    </p>
+                    </a>
+                  </li> --}}
+                  <li class="nav-item">
+                    <a href="{{ route('team.create') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>
+                        Add Member
+                    </p>
+                    </a>
+                    <a href="{{ route('team.index') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>
+                        List Members
+                    </p>
+                    </a>
+                  </li>
+                </ul>
+            </li> --}}

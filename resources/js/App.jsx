@@ -3,8 +3,14 @@ import ReactDOM from "react-dom/client";
 // import './index.scss';
 import Main from "./Main";
 import reportWebVitals from "./reportWebVitals";
+// import { pdfjs } from 'react-pdf';
 import { store } from "./store/store";
 import { Provider } from "react-redux";
+
+// pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+//   'pdfjs-dist/build/pdf.worker.min.js',
+//   import.meta.url,
+// ).toString();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -81,7 +81,8 @@
                                         <th>SN</th>
                                         <th>Title</th>
                                         <th>Members in Card</th>
-                                        <th>PDF's</th>
+                                        <th>Members PDF</th>
+                                        <th>Activity PDF's</th>
                                         <th class="text-center">Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -104,6 +105,17 @@
                                             </td>
                                             <td>
                                                 <a href="{{ asset('upload/files/samitis/'.$value->samiti_pdf) }}" target="__blank">{{ $value->samiti_pdf }}</a>
+                                            </td>
+                                            <td >
+                                                <a 
+                                                href="{{ route('samiti.activity.index',$value->slug) }}"
+                                                 class="btn btn-info btn-sm"><i class="fa fa-eye"></i>
+                                                 {{-- @if ($value->samiti_member_cards)
+                                                 {{ $value->images->count() }}
+                                             @else
+                                                 0
+                                             @endif --}}
+                                                </a>
                                             </td>
                                             <td class="text-center">
                                                 @if ($value->status == 'on')

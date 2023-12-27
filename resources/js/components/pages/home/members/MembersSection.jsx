@@ -5,41 +5,66 @@ import { useNavigate } from "react-router-dom";
 
 const MembersSection = () => {
     const [sliceNum, setSliceNum] = useState(6);
-    const [teamsApi, setTeamsApi] = useState();
+    // const [teamsApi, setTeamsApi] = useState();
+    const [samitiListApi, setSamitiListApi] = useState([]);
+    const [samitiDetailApi, setSamitiDetailApi] = useState();
 
     const navigate = useNavigate();
 
-    const fetchTeams = async () => {
+    // const fetchTeams = async () => {
+    //     const res = await axios.get(
+    //         import.meta.env.VITE_API_BASE_URL + "/api/home/teams"
+    //     );
+    //     const data = await res.data;
+    //     setTeamsApi(data);
+    // };
+    const windowWidth = window.innerWidth;
+
+    const fetchSamitiListApi = async () => {
         const res = await axios.get(
-            import.meta.env.VITE_API_BASE_URL + "/api/home/teams"
+            import.meta.env.VITE_API_BASE_URL + "/api/nav/samiti"
         );
         const data = await res.data;
-        setTeamsApi(data);
+        setSamitiListApi(data);
     };
-    const windowWidth = window.innerWidth;
+
+    const fetchSamitiDetail = async () => {
+        const res = await axios.get(
+            import.meta.env.VITE_API_BASE_URL +
+                `/api/samiti/details/${
+                    samitiListApi && samitiListApi?.[0]?.slug
+                }`
+        );
+        const data = await res.data;
+        setSamitiDetailApi(data);
+    };
 
     useEffect(() => {
         windowWidth <= 550 ? setSliceNum(4) : setSliceNum(6);
-        fetchTeams();
+        fetchSamitiListApi();
+        fetchSamitiDetail();
+        // fetchTeams();
     }, []);
 
     const mCard =
-        teamsApi?.[0] &&
-        teamsApi
+        samitiDetailApi?.members_card?.[0] &&
+        samitiDetailApi?.members_card
             .slice(0, sliceNum)
             .map((member) => <MemberCard cardInfo={member} key={member?.id} />);
 
     return (
         <div className="team-members-page">
-            {teamsApi?.length > 0 && (
+            {samitiDetailApi?.members_card?.length > 0 && (
                 <div className="in-wrapper">
                     <div className="heading-wrapper">
                         <div className="title">हाम्रो टिम</div>
-                        {teamsApi?.length > sliceNum && (
+                        {samitiDetailApi?.members_card?.length > sliceNum && (
                             <div
                                 className="see-more"
                                 onClick={() => {
-                                    navigate("/samiti/karyasamiti");
+                                    navigate(
+                                        `/samiti/${samitiListApi?.[0]?.slug}`
+                                    );
                                 }}
                             >
                                 थप हेर्नुहोस्

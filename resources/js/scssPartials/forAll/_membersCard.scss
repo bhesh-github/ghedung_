@@ -1,0 +1,52 @@
+.member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    .member-img {
+        height: 250px;
+        width: 100%;
+        border: 5px solid black;
+    }
+    .text-wrapper {
+        margin-top: -5px;
+        text-align: center;
+        color: $primaryTitleDarker;
+        font-size: 17px;
+        .name {
+            font-weight: 700;
+            font-size: 20px;
+            color: $primaryDarkBlue;
+        }
+        .designation {
+            color: $primaryTitleDarker;
+            font-weight: 600;
+            font-size: 17px;
+        }
+    }
+}
+@media screen and (max-width: 850px) {
+    .member-card {
+        gap: 0.5em;
+        .text-wrapper {
+            font-size: 14px;
+            .name {
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .member-card {
+        .text-wrapper {
+            font-size: 12px;
+            .designation {
+                font-size: 12px;
+            }
+            .name {
+                font-size: 15px;
+            }
+        }
+    }
+}
