@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { BsTwitter, BsYoutube } from "react-icons/bs";
-import { RiFacebookFill } from "react-icons/ri";
+import { FaFacebookF } from "react-icons/fa";
+import { GrYoutube } from "react-icons/gr";
+import { SiGmail } from "react-icons/si";
 
 const Footer = () => {
     const [newDate, setNewDate] = useState("");
@@ -26,19 +27,27 @@ const Footer = () => {
         <div className="footer">
             <div className="contents">
                 <div className="social-icons">
-                    <div className="icons-wrapper">
-                        <a href={companyProfileApi?.facebook} target="__blank">
-                            <RiFacebookFill className="icon" />
+                    <div className="icons">
+                        <a
+                            href={companyProfileApi?.facebook}
+                            target="__blank"
+                            className="icon-wrapper fb-wrapper"
+                        >
+                            <FaFacebookF className="social-icon" />
                         </a>
-                    </div>
-                    {/* <div className="icons-wrapper">
-                        <a href={companyProfileApi?.twitter} target="__blank">
-                            <BsTwitter className="icon" />
+                        <a
+                            href={companyProfileApi?.youtube}
+                            target="__blank"
+                            className="icon-wrapper youtube-wrapper"
+                        >
+                            <GrYoutube className="social-icon" />
                         </a>
-                    </div> */}
-                    <div className="icons-wrapper">
-                        <a href={companyProfileApi?.youtube} target="__blank">
-                            <BsYoutube className="icon" />
+                        <a
+                            href={`mailto:${companyProfileApi?.email}`}
+                            target="__blank"
+                            className="icon-wrapper gmail-wrapper"
+                        >
+                            <SiGmail className="social-icon gmail-icon" />
                         </a>
                     </div>
                 </div>

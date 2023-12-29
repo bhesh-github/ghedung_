@@ -14,10 +14,14 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activity = Activity::latest()->get();
+        $activity = Activity::where('pdf_file', '0')->latest()->paginate(5);
         return view('admin.activity.index', compact("activity"));
     }
-
+    public function pdfIndex()
+    {
+        $activity_pdf = Activity::where('pdf_file', '!=', '0')->latest()->paginate(20);
+        return view('admin.activity.activity-pdfs', compact("activity_pdf"));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -31,28 +35,52 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        $activity = new Activity;
-        $activity->title = $request->title;
-        // Use the model's ID followed by a random 9-digit number as the slug
-        $slug = $activity->id . '-' . Str::random(9);
-        $activity->slug = $slug;
-        $activity->subtitle = $request->subtitle;
-        $activity->activity_post_date = $request->activity_post_date;
-        if ($request->hasfile('image')) {
-            $file = $request->file('image');
-            $filename1 = $file->getClientOriginalName(); //getting image extension
-            $filename = time() . '_' . $filename1;
-            $file->move('upload/images/activity/', $filename);
-            $activity->image = $filename;
-        }
-        $activity->description = $request->description;
-        if ($request->status) {
-            $activity->status = "on";
+        if ($request->hasfile('file')) {
+            $activity = new Activity;
+            $activity->title = $request->title;
+            // Use the model's ID followed by a random 9-digit number as the slug
+            $slug = $activity->id . '-' . Str::random(9);
+            $activity->slug = $slug;
+            if ($request->hasfile('file')) {
+                $file = $request->file('file');
+                $filename1 = $file->getClientOriginalName(); //getting image extension
+                $filename = time() . '_' . $filename1;
+                $activity->pdf_file = $filename;
+                $file->move('upload/files/activity', $filename);
+            }
+            if ($request->status) {
+                $activity->status = "on";
+            } else {
+                $activity->status = "off";
+            }
+            $activity->save();
+            return back()->with('success', 'File Added Successfully.');
+
         } else {
-            $activity->status = "off";
+            $activity = new Activity;
+            $activity->title = $request->title;
+            // Use the model's ID followed by a random 9-digit number as the slug
+            $slug = $activity->id . '-' . Str::random(9);
+            $activity->slug = $slug;
+            $activity->subtitle = $request->subtitle;
+            $activity->activity_post_date = $request->activity_post_date;
+            if ($request->hasfile('image')) {
+                $file = $request->file('image');
+                $filename1 = $file->getClientOriginalName(); //getting image extension
+                $filename = time() . '_' . $filename1;
+                $file->move('upload/images/activity/', $filename);
+                $activity->image = $filename;
+            }
+            $activity->description = $request->description;
+            $activity->pdf_file = false;
+            if ($request->status) {
+                $activity->status = "on";
+            } else {
+                $activity->status = "off";
+            }
+            $activity->save();
+            return redirect()->route('activity.index')->with('success', 'Activity has been added successfully');
         }
-        $activity->save();
-        return redirect()->route('activity.index')->with('success', 'Activity has been added successfully');
     }
 
     /**
@@ -77,28 +105,56 @@ class ActivityController extends Controller
      */
     public function update(Request $request)
     {
-        $activity = Activity::find($request->id);
-        $activity->title = $request->title;
-        // Use the model's ID followed by a random 9-digit number as the slug
-        $slug = $activity->id . '-' . Str::random(9);
-        $activity->slug = $slug;
-        $activity->subtitle = $request->subtitle;
-        $activity->activity_post_date = $request->activity_post_date;
-        if ($request->hasfile('image')) {
-            $file = $request->file('image');
-            $filename1 = $file->getClientOriginalName(); //getting image extension
-            $filename = time() . '_' . $filename1;
-            $file->move('upload/images/activity/', $filename);
-            $activity->image = $filename;
-        }
-        $activity->description = $request->description;
-        if ($request->status) {
-            $activity->status = "on";
+        if ($request->article_type === 'pdf') {
+            $activity = Activity::find($request->id);
+            $activity->title = $request->title;
+            // Use the model's ID followed by a random 9-digit number as the slug
+            $slug = $activity->id . '-' . Str::random(9);
+            $activity->slug = $slug;
+            if ($request->hasfile('file')) {
+                $file = $request->file('file');
+                $filename1 = $file->getClientOriginalName(); //getting image extension
+                $filename = time() . '_' . $filename1;
+                $file->move('upload/files/activity', $filename);
+                $activity->pdf_file = $filename;
+            } else {
+                $filename = $activity->pdf_file;
+                $activity->pdf_file = $filename;
+            }
+            if ($request->status) {
+                $activity->status = "on";
+            } else {
+                $activity->status = "off";
+            }
+            $activity->update();
+            return back()->with('success', 'Activity has been updated successfully');
+
         } else {
-            $activity->status = "off";
+
+            $activity = Activity::find($request->id);
+            $activity->title = $request->title;
+            // Use the model's ID followed by a random 9-digit number as the slug
+            $slug = $activity->id . '-' . Str::random(9);
+            $activity->slug = $slug;
+            $activity->subtitle = $request->subtitle;
+            $activity->activity_post_date = $request->activity_post_date;
+            if ($request->hasfile('image')) {
+                $file = $request->file('image');
+                $filename1 = $file->getClientOriginalName(); //getting image extension
+                $filename = time() . '_' . $filename1;
+                $file->move('upload/images/activity/', $filename);
+                $activity->image = $filename;
+            }
+            $activity->description = $request->description;
+            $activity->pdf_file = false;
+            if ($request->status) {
+                $activity->status = "on";
+            } else {
+                $activity->status = "off";
+            }
+            $activity->update();
+            return redirect()->route('activity.index')->with('success', 'Activity has been updated successfully');
         }
-        $activity->update();
-        return redirect()->route('activity.index')->with('success', 'Activity has been updated successfully');
     }
 
     public function changeStatus($id)

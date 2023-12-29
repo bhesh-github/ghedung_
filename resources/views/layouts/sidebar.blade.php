@@ -106,6 +106,43 @@
             </ul>
             </li>
             <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-newspaper"></i>
+                <p>
+                 Activity (गतिविधि)
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('activity.create') }}"  class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Add Activity
+                  </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('activity.index') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      List Activities
+                  </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a 
+                  href="{{ route('activity-pdf.index') }}" 
+                  class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      List PDF's
+                  </p>
+                  </a>
+                </li>
+              </ul>
+          </li>
+            {{-- <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-newspaper"></i>
                   <p>
@@ -131,7 +168,7 @@
                     </a>
                   </li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-image"></i>
@@ -160,32 +197,13 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-newspaper"></i>
-                  <p>
-                   Notice (सुचना)
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="{{ route('notice.create') }}" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>
-                        Add Notice
-                    </p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="{{ route('notice.index') }}" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>
-                        List Notices
-                    </p>
-                    </a>
-                  </li>
-                </ul>
-            </li>
+              <a href="{{ route('notice.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-newspaper"></i>
+                <p>
+                 Notice (सुचना)
+                </p>
+              </a>
+          </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-newspaper"></i>
@@ -211,35 +229,19 @@
                     </p>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a 
+                    href="{{ route('article-pdf.index') }}" 
+                    class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>
+                        List PDF's
+                    </p>
+                    </a>
+                  </li>
                 </ul>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-newspaper"></i>
-                <p>
-                 Activity (गतिविधि)
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('activity.create') }}"  class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>
-                      Add Activity
-                  </p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('activity.index') }}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>
-                      List Activities
-                  </p>
-                  </a>
-                </li>
-              </ul>
-          </li>
+          
         
             <li class="nav-item">
               <a
@@ -251,7 +253,7 @@
                 </p>
               </a>
           </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                 <p>
@@ -275,7 +277,7 @@
                   </a>
                 </li>
               </ul>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>

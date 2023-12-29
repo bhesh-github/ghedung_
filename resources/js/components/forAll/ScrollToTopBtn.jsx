@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { AiOutlineArrowUp } from "react-icons/ai";
-import { TfiArrowCircleUp } from "react-icons/tfi";
+import { MdArrowBackIosNew } from "react-icons/md";
 
 const ScrollToTopBtn = () => {
   const [isVisible, setIsVisible] = useState();
@@ -32,7 +31,7 @@ const ScrollToTopBtn = () => {
             handleScroll();
           }}
         >
-          <TfiArrowCircleUp className="scroll-icon" />
+          <MdArrowBackIosNew className="scroll-icon" />
         </div>
       )}
     </>

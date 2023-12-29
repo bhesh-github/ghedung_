@@ -16,8 +16,13 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $article = Article::latest()->get();
+        $article = Article::where('pdf_file', '0')->latest()->paginate(5);
         return view('admin.article.index', compact("article"));
+    }
+    public function pdfIndex()
+    {
+        $article_pdf = Article::where('pdf_file', '!=', '0')->latest()->paginate(20);
+        return view('admin.article.article-pdfs', compact("article_pdf"));
     }
 
     /**
@@ -39,41 +44,64 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        // artilce
-        $article = new Article;
-        $article->title = $request->title;
-        // Use the model's ID followed by a random 9-digit number as the slug
-        $slug = $article->id . '-' . Str::random(9);
-        $article->slug = $slug;
-        $article->subtitle = $request->subtitle;
-        $article->article_post_date = $request->article_post_date;
-        if ($request->hasfile('image')) {
-            $file = $request->file('image');
-            $filename1 = $file->getClientOriginalName(); //getting image extension
-            $filename = time() . '_' . $filename1;
-            $file->move('upload/images/article/', $filename);
-            $article->image = $filename;
-        }
-        $article->description = $request->description;
-
-        // writer
-        $article->writer_name = $request->writer_name;
-        $article->writer_address = $request->writer_address;
-        if ($request->hasfile('writer_image')) {
-            $file = $request->file('writer_image');
-            $filename1 = $file->getClientOriginalName(); //getting image extension
-            $filename = time() . '_' . $filename1;
-            $file->move('upload/images/article/', $filename);
-            $article->writer_image = $filename;
-        }
-        $article->shares = 0;
-        if ($request->status) {
-            $article->status = "on";
+        // article
+        if ($request->hasfile('file')) {
+            $article = new Article;
+            $article->title = $request->title;
+            // Use the model's ID followed by a random 9-digit number as the slug
+            $slug = $article->id . '-' . Str::random(9);
+            $article->slug = $slug;
+            if ($request->hasfile('file')) {
+                $file = $request->file('file');
+                $filename1 = $file->getClientOriginalName(); //getting image extension
+                $filename = time() . '_' . $filename1;
+                $article->pdf_file = $filename;
+                $file->move('upload/files/article', $filename);
+            }
+            if ($request->status) {
+                $article->status = "on";
+            } else {
+                $article->status = "off";
+            }
+            $article->save();
+            return back()->with('success', 'File Added Successfully.');
         } else {
-            $article->status = "off";
+            $article = new Article;
+            $article->title = $request->title;
+            // Use the model's ID followed by a random 9-digit number as the slug
+            $slug = $article->id . '-' . Str::random(9);
+            $article->slug = $slug;
+            $article->subtitle = $request->subtitle;
+            $article->article_post_date = $request->article_post_date;
+            if ($request->hasfile('image')) {
+                $file = $request->file('image');
+                $filename1 = $file->getClientOriginalName(); //getting image extension
+                $filename = time() . '_' . $filename1;
+                $file->move('upload/images/article/', $filename);
+                $article->image = $filename;
+            }
+            $article->description = $request->description;
+            $article->pdf_file = false;
+
+            // writer
+            $article->writer_name = $request->writer_name;
+            $article->writer_address = $request->writer_address;
+            if ($request->hasfile('writer_image')) {
+                $file = $request->file('writer_image');
+                $filename1 = $file->getClientOriginalName(); //getting image extension
+                $filename = time() . '_' . $filename1;
+                $file->move('upload/images/article/', $filename);
+                $article->writer_image = $filename;
+            }
+            $article->shares = 0;
+            if ($request->status) {
+                $article->status = "on";
+            } else {
+                $article->status = "off";
+            }
+            $article->save();
+            return redirect()->route('article.index')->with('success', 'Article has been added successfully');
         }
-        $article->save();
-        return redirect()->route('article.index')->with('success', 'Article has been added successfully');
     }
 
     /**
@@ -107,44 +135,69 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
+    // article
     {
-        // artilce
-        $article = Article::find($request->id);
-        $article->title = $request->title;
-        // Use the model's ID followed by a random 9-digit number as the slug
-        $slug = $article->id . '-' . Str::random(9);
-        $article->slug = $slug;
-        $article->subtitle = $request->subtitle;
-        $article->article_post_date = $request->article_post_date;
-        if ($request->hasfile('image')) {
-            $file = $request->file('image');
-            $filename1 = $file->getClientOriginalName(); //getting image extension
-            $filename = time() . '_' . $filename1;
-            $file->move('upload/images/article/', $filename);
-            $article->image = $filename;
-        }
-        $article->description = $request->description;
-
-        // writer
-        $article->writer_name = $request->writer_name;
-        $article->writer_address = $request->writer_address;
-        if ($request->hasfile('writer_image')) {
-            $file = $request->file('writer_image');
-            $filename1 = $file->getClientOriginalName(); //getting image extension
-            $filename = time() . '_' . $filename1;
-            $file->move('upload/images/article/', $filename);
-            $article->writer_image = $filename;
-        }
-        $article->shares = 0;
-        if ($request->status) {
-            $article->status = "on";
+        if ($request->article_type === 'pdf') {
+            $article = Article::find($request->id);
+            $article->title = $request->title;
+            // Use the model's ID followed by a random 9-digit number as the slug
+            $slug = $article->id . '-' . Str::random(9);
+            $article->slug = $slug;
+            // $article->subtitle = $request->subtitle;
+            if ($request->hasfile('file')) {
+                $file = $request->file('file');
+                $filename1 = $file->getClientOriginalName(); //getting image extension
+                $filename = time() . '_' . $filename1;
+                $file->move('upload/files/article', $filename);
+                $article->pdf_file = $filename;
+            } else {
+                $filename = $article->pdf_file;
+                $article->pdf_file = $filename;
+            }
+            if ($request->status) {
+                $article->status = "on";
+            } else {
+                $article->status = "off";
+            }
+            $article->update();
+            return back()->with('success', 'Article has been updated successfully');
         } else {
-            $article->status = "off";
+            $article = Article::find($request->id);
+            $article->title = $request->title;
+            // Use the model's ID followed by a random 9-digit number as the slug
+            $slug = $article->id . '-' . Str::random(9);
+            $article->slug = $slug;
+            $article->subtitle = $request->subtitle;
+            $article->article_post_date = $request->article_post_date;
+            if ($request->hasfile('image')) {
+                $file = $request->file('image');
+                $filename1 = $file->getClientOriginalName(); //getting image extension
+                $filename = time() . '_' . $filename1;
+                $file->move('upload/images/article/', $filename);
+                $article->image = $filename;
+            }
+            $article->description = $request->description;
+            $article->pdf_file = false;
+            // writer
+            $article->writer_name = $request->writer_name;
+            $article->writer_address = $request->writer_address;
+            if ($request->hasfile('writer_image')) {
+                $file = $request->file('writer_image');
+                $filename1 = $file->getClientOriginalName(); //getting image extension
+                $filename = time() . '_' . $filename1;
+                $file->move('upload/images/article/', $filename);
+                $article->writer_image = $filename;
+            }
+            $article->shares = 0;
+            if ($request->status) {
+                $article->status = "on";
+            } else {
+                $article->status = "off";
+            }
+            $article->update();
+            return redirect()->route('article.index')->with('success', 'Article has been updated successfully');
         }
-        $article->update();
-        return redirect()->route('article.index')->with('success', 'Article has been updated successfully');
     }
-
     /**
      * Remove the specified resource from storage.
      *

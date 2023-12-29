@@ -11,6 +11,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArticlePdfController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\SamitiMemberCardController;
 use App\Http\Controllers\ActivityController;
@@ -31,6 +32,7 @@ use App\Http\Controllers\GalleryImageController;
 // Sub Company 
 use App\Http\Controllers\SubCompanyController;
 use App\Http\Controllers\SubCompanySectionController;
+use App\Http\Controllers\SubCompanySectionContentController;
 use App\Http\Controllers\SubCompanyTeamController;
 use App\Http\Controllers\SubCompanyActivityController;
 
@@ -144,6 +146,7 @@ Route::prefix('admin')->group(function () {
     // articles
     Route::controller(ArticleController::class)->group(function () {
         Route::get('/article', 'index')->name('article.index');
+        Route::get('/article-pdf', 'pdfIndex')->name('article-pdf.index');
         Route::get('/article/create', 'create')->name('article.create');
         Route::post('/article/add', 'store')->name('article.store');
         Route::get('/article/edit/{id}', 'edit')->name('article.edit');
@@ -152,9 +155,21 @@ Route::prefix('admin')->group(function () {
         Route::get('/article/status/change/{id}', 'changeStatus')->name('article.status');
     });
 
+    // // article pdfs
+    // Route::controller(ArticlePdfController::class)->group(function () {
+    //     Route::get('/article-pdf', 'index')->name('article-pdf.index');
+    //     Route::get('/article-pdf/create', 'create')->name('article-pdf.create');
+    //     Route::post('/article-pdf/add', 'store')->name('article-pdf.store');
+    //     Route::get('/article-pdf/edit/{id}', 'edit')->name('article-pdf.edit');
+    //     Route::post('/article-pdf/update', 'update')->name('article-pdf.update');
+    //     Route::get('/article-pdf/status/change/{id}', 'changeStatus')->name('article-pdf.status');
+    //     Route::post('/article-pdf/delete', 'destroy')->name('article-pdf.delete');
+    // });
+
     // activities
     Route::controller(ActivityController::class)->group(function () {
         Route::get('/activity', 'index')->name('activity.index');
+        Route::get('/activity-pdf', 'pdfIndex')->name('activity-pdf.index');
         Route::get('/activity/create', 'create')->name('activity.create');
         Route::post('/activity/add', 'store')->name('activity.store');
         Route::get('/activity/edit/{id}', 'edit')->name('activity.edit');
@@ -194,8 +209,8 @@ Route::prefix('admin')->group(function () {
         });
     });
 
-       // samiti activity
-       Route::prefix('/samiti')->group(function () {
+    // samiti activity
+    Route::prefix('/samiti')->group(function () {
         Route::controller(SamitiActivityPdfController::class)->group(function () {
             Route::get('/activity/${samiti_slug}', 'index')->name('samiti.activity.index');
             Route::get('/activity/create/${samiti_slug}', 'create')->name('samiti.activity.create');
@@ -256,19 +271,22 @@ Route::prefix('admin')->group(function () {
     // ----------------------------------------------------------------------------------------------------- 
     // Sub Company Sections
     Route::prefix('/sub-company')->group(function () {
+        // sections
         Route::controller(SubCompanySectionController::class)->group(function () {
-            Route::get('/sections/{slug}', 'index')->name('sub-company.sections.index');
-            Route::get('/section/{sec_slug}/{comp_slug}', 'section')->name('sub-company.section');
-            // Route::get('/create', 'create')->name('sub-company.create');
-            // Route::post('/add', 'store')->name('sub-company.store');
-            // Route::get('/edit/{id}', 'edit')->name('sub-company.edit');
-            // Route::post('/update', 'update')->name('sub-company.update');
-            // Route::post('/delete', 'destroy')->name('sub-company.delete');
-            // Route::get('/status/change/{id}', 'changeStatus')->name('sub-company.status');
-            // // profile
-            // Route::get('/profile/{slug}', 'profile')->name('sub-company.profile');
-            // Route::get('/sections/{slug}', 'sections')->name('sub-company.sections');
-            // Route::get('/sub-company/status/change/{id}', 'changeStatus')->name('sub-company.status');
+            Route::get('/sections/{company_slug}', 'index')->name('sub-company.sections.index');
+            // Route::get('/section/{sec_slug}/{comp_slug}', 'section')->name('sub-company.section');
+            Route::post('/section/add', 'store')->name('sub-company.section.store');
+            Route::post('/section/update', 'update')->name('sub-company.section.update');
+            Route::get('/section/status/change/{id}', 'changeStatus')->name('sub-company.section.status');
+            Route::post('/section/delete', 'destroy')->name('sub-company.section.delete');
+        });
+        // section contents
+        Route::controller(SubCompanySectionContentController::class)->group(function () {
+            Route::get('/section-contents/{company_slug}/{section_slug}', 'index')->name('sub-company.section-contents.index');
+            Route::post('/section-content/add', 'store')->name('sub-company.section-content.store');
+            Route::post('/section-content/update', 'update')->name('sub-company.section-content.update');
+            Route::get('/section-content/status/change/{id}', 'changeStatus')->name('sub-company.section-content.status');
+            Route::post('/section-content/delete', 'destroy')->name('sub-company.section-content.delete');
         });
     });
 

@@ -11,16 +11,17 @@ const InnerBanner = lazy(() => import("../../forAll/InnerBanner"));
 const Dastabej = () => {
     const [dastabejApi, setDastabejApi] = useState();
 
-    const fetchNotices = async () => {
+    const fetchDastabej = async () => {
         const res = await axios.get(
-            import.meta.env.VITE_API_BASE_URL + "/api/downloads"
+            import.meta.env.VITE_API_BASE_URL +
+                "/api/downloads?_limit=2&_page=2"
         );
         const data = await res.data;
         setDastabejApi(data);
     };
 
     useEffect(() => {
-        fetchNotices();
+        fetchDastabej();
     }, []);
 
     const innerBannerInfo = {

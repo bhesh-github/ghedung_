@@ -16,17 +16,14 @@ return new class extends Migration {
             $table->longText('subtitle')->nullable();
             $table->string('slug');
             $table->string('image')->nullable();
-            $table->longText('description');
+            $table->longText('description')->nullable();
+            $table->string('pdf_file')->nullable();
             $table->string('writer_name')->nullable();
             $table->string('writer_address')->nullable();
             $table->string('writer_image')->nullable();
             $table->string('article_post_date')->nullable();
             $table->string('shares')->default(null);
             $table->string('status');
-            // $table->foreign('writer_id')->references('id')->on('writers')
-            //     ->cascadeOnUpdate()->cascadeOnDelete();
-            // $table->foreignId('writer_id')->constrained('writers')
-            //     ->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

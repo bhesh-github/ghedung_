@@ -1,28 +1,28 @@
 .scroll-to-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  right: 5rem;
-  bottom: 5rem;
-  z-index: 999999999;
-  transition: 0.3s;
-  cursor: pointer;
-  .scroll-icon {
-    color: $primaryGrey;
-    color: grey;
-    height: 35px;
-    width: 35px;
-  }
-  &:hover {
+    background-color: #fff;
+    box-shadow: 2px 2px 5px rgba(157, 157, 157, 0.619);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 5rem;
+    bottom: 5rem;
+    z-index: 999999999;
+    padding: 9px;
+    cursor: pointer;
     .scroll-icon {
-      color: $primaryGrey;
+        rotate: 89deg;
+        color: rgb(99, 99, 99) !important;
+        width: 100%;
+        height: 100%;
     }
-  }
 }
 @media screen and (max-width: 550px) {
-  .scroll-to-btn {
-    right: 2rem;
-    bottom: 2rem;
-  }
+    .scroll-to-btn {
+        right: 2rem;
+        bottom: 2rem;
+    }
 }

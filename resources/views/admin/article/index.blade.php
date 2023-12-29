@@ -58,12 +58,8 @@
                              alt="Image" width="100px">
                           @endif
                         </td>
-                        {{-- <td>
-                            <textarea name="short_description" id="" cols="30" rows="10" class="form-control" style="width: 250px" readonly>{{ $value->short_description }}</textarea>
-                        </td> --}}
                         <td>
                           {!! $value->description !!}
-                            {{-- <textarea name="description" id="" cols="30" rows="10" class="form-control" style="width: 250px" readonly>{{ $value->description }}</textarea> --}}
                         </td>
                         <td>{{ $value->writer_name }}</td>
                         <td>{{ $value->writer_address }}</td>
@@ -110,6 +106,9 @@
           <!-- /.card -->
 
         </div>
+        <div class="row">
+          {{$article->links('pagination::simple-bootstrap-4')}}
+      </div>
         </div>
         <!--/.col (left) -->
 

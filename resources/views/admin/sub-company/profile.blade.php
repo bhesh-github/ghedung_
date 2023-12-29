@@ -18,9 +18,10 @@
                         </div>
                         <div class="col-md-12 text-left">
                             <h4>Sub Company Profile</h4>
+                            
                         </div>
                         <!-- left column -->
-                        <div class="col-md-7">
+                        <div class="col-md-12 p-x">
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
@@ -70,7 +71,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        {{-- <div class="col-md-5">
                             <div class="card card-success">
                                 <div class="card-header">
                                     <h3 class="card-title">Other Informations</h3>
@@ -142,7 +143,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="card-footer text-center">
                         <button type="submit" class="btn btn-primary"

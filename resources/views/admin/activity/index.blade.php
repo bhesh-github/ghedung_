@@ -91,6 +91,9 @@
           <!-- /.card -->
 
         </div>
+        <div class="row">
+          {{$activity->links('pagination::simple-bootstrap-4')}}
+      </div>
         </div>
         <!--/.col (left) -->
 

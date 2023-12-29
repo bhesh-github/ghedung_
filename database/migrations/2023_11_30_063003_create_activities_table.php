@@ -16,7 +16,8 @@ return new class extends Migration {
             $table->longText('subtitle')->nullable();
             $table->string('slug');
             $table->string('image')->nullable();
-            $table->longText('description');
+            $table->longText('description')->nullable();
+            $table->string('pdf_file')->nullable();
             $table->string('activity_post_date')->nullable();
             $table->string('status');
             $table->timestamps();
